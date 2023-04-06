@@ -470,6 +470,9 @@ compress_combine_slide slide_down(int board[4][4]) {
 
 
 int main() {
+    
+    // to store the game status
+    string status;
 
     HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
     
@@ -495,6 +498,7 @@ int main() {
             cout << "Invalid input, please choose direction again." << endl;
             SetConsoleTextAttribute(col, 7);
             printboard(board);
+            cout << "Continue" << endl;
             continue;
         }
 
@@ -528,6 +532,7 @@ int main() {
             cout << "Invalid direction, please choose direction again." << endl;
             SetConsoleTextAttribute(col, 7);
             printboard(board);
+            cout << "Continue" << endl;
             continue;
         }
         
@@ -567,4 +572,5 @@ int main() {
 
         }
     }
+    return status == "CONGRATULATIONS!!!";
 }
