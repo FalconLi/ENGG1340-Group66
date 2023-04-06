@@ -29,3 +29,51 @@ string timeuse(time_t time, time_t t1) {
         return "time spent: " + to_string(x) + "min " + to_string(y) + "sec";
     }
 }
+
+
+// Main function of minigame guess the number, given 't1' as the starting timestamp in the main function
+bool main(time_t t1) {
+    cout << "There is a random number between 1-20 (1 & 20 included), try to guess it and you will have a key.\n"
+        << "You only have 2 minutes!" << endl;
+    int number = rand() % 20 + 1;
+    string guess;
+    cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
+    cin >> guess;
+    while (guess != "e" && guess != to_string(number)) {
+        if (time(NULL) - t1 >= 120) {
+            cout << endl;
+            cout << timeuse(time(NULL), t1) << endl;
+            cout << "Times up!" << endl;
+
+            // even if the player guessed the number right, but if 2 minutes are over, the player has still lost, therefore set guess = "0" (can't be right, since number is between 1 and 20)
+            guess = to_string(0);
+            break;
+        }
+        if (is_digits(guess)) {
+            if (stoi(guess) > 20 || stoi(guess) < 1) {
+                cout << "Invalid number, please guess again." << endl;
+                cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
+                cin >> guess;
+                continue;
+            }
+            else if (stoi(guess) < number) {
+                cout << guess << " is too small." << endl;
+            }
+            else if (stoi(guess) > number) {
+                cout << guess << " is too large." << endl;
+            }
+            else {
+                break;
+            }
+        }
+        if (is_digits(guess) == false) {
+            cout << "Invalid input, please guess again." << endl;
+            cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
+            cin >> guess;
+            continue;
+        }
+        cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
+        cin >> guess;
+    }
+    return guess == to_string(number)
+}
