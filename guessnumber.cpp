@@ -35,6 +35,9 @@ string timeuse(time_t time, time_t t1) {
 bool main(time_t t1) {
     cout << "There is a random number between 1-20 (1 & 20 included), try to guess it and you will have a key.\n"
         << "You only have 2 minutes!" << endl;
+    
+    // initialize the random number generator with the current time, so that the seed is different every time
+    srand(time(NULL)); 
     int number = rand() % 20 + 1;
     string guess;
     cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
