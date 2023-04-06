@@ -1,0 +1,442 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
+#include <stdlib.h>
+#include <windows.h>
+#include <unistd.h>
+using namespace std;
+
+
+//This is the welcome function to start the game 512
+void Welcome() {
+    cout << "*****************************************************************" << endl;
+    cout << "***************     Welcome to the 128-Game      ****************" << endl;
+    cout << "**                                                             **" << endl;
+    cout << "** 1. Similar to 2048, the aim of the game is to slide cells   **" << endl;
+    cout << "**    containing numbers on a 4*4 board to combine them to     **" << endl;
+    cout << "**    create the number 128                                    **" << endl;
+    cout << "** 2. Once you create the number 128, you will win             **" << endl;
+    cout << "** 3. If you fail to create 128 with all cells occupied and no **" << endl;
+    cout << "**    chance of combining cells, you will fail                 **" << endl;
+    cout << "**                                                             **" << endl;
+    cout << "***************           GOOD LUCK!!!           ****************" << endl;
+    cout << "*****************************************************************" << endl;
+    cout << "Press enter to proceed to the commands ";
+    cin.ignore();
+    cout << "Command are as follows: " << endl;
+    cout << "\tSlide Left:  a" << endl;
+    cout << "\tSlide Right: d" << endl;
+    cout << "\tSlide Up:    w" << endl;
+    cout << "\tSlide Down:  s" << endl;
+    cout << "\tExit:        e" << endl;
+    cout << "Press enter to start the game ";
+    cin.ignore();
+    cout << "TIME TO START!!!!" << endl;
+    cout << endl;
+}
+
+
+void printboard(int board[4][4]) {
+    // we use nested for-loops to print the 2D array board 
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (board[i][j] == 2)
+                system("Color A0");
+            if (board[i][j] == 4)
+                system("Color B0");
+            if (board[i][j] == 8)
+                system("Color C0");
+            if (board[i][j] == 16)
+                system("Color D0");
+            if (board[i][j] == 32)
+                system("Color E0");
+            if (board[i][j] == 64)
+                system("Color 90");
+            if (board[i][j] == 128)
+                system("Color F0");
+            cout << setw(3) << board[i][j] << " " << endl;
+        }
+    }
+    system("Color 07");
+}
+
+
+// This function chooses two random cells to change them to 2 or 4 randomly to create the starting board.
+void createRandom(int board[4][4], int randomarr[]) {
+    srand(time(NULL)); // initialize the random number generator with the current time, so that the seed is different every time
+
+    for (int i = 0; i < 2; i++) {
+        int x = rand() % 4; // choose a random line in the array
+        int y = rand() % 4; // choose a random cell in the line
+
+        // check if the cell is already occupied
+        while (board[x][y] != 0) {
+            y = rand() % 4; // choose another random cell
+        }
+
+        board[x][y] = randomarr[rand() % 10]; // choose a random value from randomarr assign it to the cell
+    }
+    printboard(board);
+}
+
+
+// For the player to choose the direction
+char chooseDirection() {
+    char x;
+    cout << "Choose the direction to slide (a/w/s/d/e):";
+    cin >> x;
+    return x;
+}
+
+
+// This function is used to randomly put 2 or 4 to a randomly chosen cell after each step.
+void randomNumberCell(int board[4][4], int randomarr[]) {
+    srand(time(NULL));
+    bool b = true; 
+    int x;
+    while (b) {
+        x = rand() % 4; // choose a random line in the array
+
+        // check if the four cells of the line are already occupied
+        for (int i = 0; i < 4; i++) {
+            if (board[x][i] == 0) {
+                b = false;
+                break;
+            }
+        }
+    }
+    int y = rand() % 4; // choose a random cell in the line
+
+    // check if the cell is already occupied
+    while (board[x][y] != 0) {
+        y = rand() % 4; // choose another random cell
+    }
+
+    board[x][y] = randomarr[rand() % 10]; // choose a random value from randarr and assign it to the cell
+    
+    printboard(board);
+}
+
+
+// check game status
+string check_game_over(int board[4][4]) {
+    // Once there is 2048 in the board, the player wins immediately.
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (board[i][j] == 2048) {
+                return "CONGRATULATIONS!!!";
+            }
+        }
+    }
+
+    // If the player has not won, and there are still 0s (empty cells) in the board, the game continues
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (board[i][j] == 0) {
+                return "Continue";
+            }
+        }
+    }
+
+    //If there are no 0s (empty cells), but two same numbers are next to each other (can be combined), the game continues
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board[i][j] == board[i + 1][j] || board[i][j] == board[i][j + 1]) {
+                return "Continue";
+            }
+        }
+    }
+
+    // The next two blocks are used to check the last line and the last column for numbers that can be combined
+    // It is separated from the block above two avoid out of index error
+    for (int i = 0; i < 3; i++) {
+        if (board[3][i] == board[3][i + 1]) {
+            return "Continue";
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        if (board[i][3] == board[i + 1][3]) {
+            return "Continue";
+        }
+    }
+
+    // If all the conditions above are not met, then the player has lost
+    return "GAME OVER!!!";
+}
+
+
+
+// The following functions are used to slide to left, right, up or down.
+// define a structure for the returned result of the compress, combine and slide functions
+struct compress_combine_slide {
+    int b[4][4];
+    bool val;
+};
+
+
+// to compress all cells to the left side without combining them
+compress_combine_slide compress_left(int board[4][4]) {
+    compress_combine_slide result;
+    bool validity = false;
+    int new_board[4][4] = { 0 };
+    for (int i = 0; i < 4; i++) {
+
+        // If there is an occupied cell (!=0）in this line, then this cell should be compressed to the first cell (board[i][0]) of this line -> position - 0
+        int position = 0;
+        for (int j = 0; j < 4; j++) {
+            if (board[i][j] != 0) {
+                new_board[i][position] = board[i][j];
+
+                // when something has changed, validity becomes true
+                if (j != position) {
+                    validity = true; 
+                }
+
+                // when board[i][0] (the first cell of this line) is occupied, position becomes 1 (the second cell of this line)
+                position++; 
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = new_board[i][j];
+    }
+    result.val = validity;
+    return result;
+}
+
+
+// to combine two same numbers
+compress_combine_slide combine_left(int board[4][4]) {
+    compress_combine_slide result;
+    bool validity = false;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board[i][j] == board[i][j + 1] && board[i][j] != 0) {
+                
+                // the number of the left cell becomes twice the original number
+                board[i][j] = board[i][j] * 2;
+
+                // the right cell becomes 0 (empty)
+                board[i][j + 1] = 0;
+                validity = true;
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = board[i][j];
+    }
+    result.val = validity;
+    return result;
+}
+
+
+// realizing sliding to the left
+compress_combine_slide slide_left(int board[4][4]) {
+    compress_combine_slide result1, result2, result3, result;
+    result1 = compress_left(board);
+    result2 = combine_left(result1.b);
+    result.val = result1.val || result2.val;
+    result3 = compress_left(result2.b);
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = result3.b[i][j];
+    }
+    return result;
+}
+
+
+// The following functions have the same logic as sliding to the left.
+// Only small changes need to be made, since sliding left combines from the left to the right, and vice versa.
+// Sliding up combines from up to down, and vice versa.
+compress_combine_slide compress_right(int board[4][4]) {
+    compress_combine_slide result;
+    bool validity = false;
+    int new_board[4][4] = { 0 };
+    for (int i = 0; i < 4; i++) {
+
+        // If there is an occupied cell (!=0）in this line, then this cell should be compressed to the last cell (board[i][3]) of this line -> position - 3
+        int position = 3;
+        for (int j = 3; j > -1; j--) {
+            if (board[i][j] != 0) {
+                new_board[i][position] = board[i][j];
+
+                // when something has changed, validity becomes true
+                if (j != position) {
+                    validity = true;
+                }
+
+                // when board[i][3] (the first cell of this line) is occupied, position becomes 2 (the penultimate cell of this line)
+                position--;
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = new_board[i][j];
+    }
+    result.val = validity;
+    return result;
+}
+
+
+compress_combine_slide combine_right(int board[4][4]) {
+    compress_combine_slide result;
+    bool validity = false;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 3; j > 0; j--) {
+            if (board[i][j] == board[i][j - 1] && board[i][j] != 0) {
+
+                // the number of the right cell becomes twice the original number
+                board[i][j] = board[i][j] * 2;
+
+                // the left cell becomes 0 (empty)
+                board[i][j - 1] = 0;
+                validity = true;
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = board[i][j];
+    }
+    result.val = validity;
+    return result;
+}
+
+
+compress_combine_slide slide_right(int board[4][4]) {
+    compress_combine_slide result1, result2, result3, result;
+    result1 = compress_right(board);
+    result2 = combine_right(result1.b);
+    result.val = result1.val || result2.val;
+    result3 = compress_right(result2.b);
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = result3.b[i][j];
+    }
+    return result;
+}
+
+
+compress_combine_slide compress_up(int board[4][4]) {
+    compress_combine_slide result;
+    bool validity = false;
+    int new_board[4][4] = { 0 };
+    for (int i = 0; i < 4; i++) {
+        int position = 0;
+        for (int j = 0; j < 4; j++) {
+            if (board[j][i] != 0) {
+                new_board[position][i] = board[j][i];
+                if (j != position) {
+                    validity = true;
+                }
+                position++;
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = new_board[i][j];
+    }
+    result.val = validity;
+    return result;
+}
+
+
+compress_combine_slide combine_up(int board[4][4]) {
+    compress_combine_slide result;
+    bool validity = false;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (board[j][i] == board[j + 1][i] && board[j][i] != 0) {
+                board[j][i] = board[j][i] * 2;
+                board[j + 1][i] = 0;
+                validity = true;
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = board[i][j];
+    }
+    result.val = validity;
+    return result;
+}
+
+
+compress_combine_slide slide_up(int board[4][4]) {
+    compress_combine_slide result1, result2, result3, result;
+    result1 = compress_up(board);
+    result2 = combine_up(result1.b);
+    result.val = result1.val || result2.val;
+    result3 = compress_up(result2.b);
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = result3.b[i][j];
+    }
+    return result;
+}
+
+
+compress_combine_slide compress_down(int board[4][4]) {
+    compress_combine_slide result;
+    bool validity = false;
+    int new_board[4][4] = { 0 };
+    for (int i = 0; i < 4; i++) {
+        int position = 3;
+        for (int j = 3; j > -1; j--) {
+            if (board[j][i] != 0) {
+                new_board[position][i] = board[j][i];
+                if (j != position) {
+                    validity = true;
+                }
+                position--;
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = new_board[i][j];
+    }
+    result.val = validity;
+    return result;
+}
+
+
+compress_combine_slide combine_down(int board[4][4]) {
+    compress_combine_slide result;
+    bool validity = false;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 3; j > 0; j--) {
+            if (board[j][i] == board[j - 1][i] && board[j][i] != 0) {
+                board[j][i] = board[j][i] * 2;
+                board[j - 1][i] = 0;
+                validity = true;
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = board[i][j];
+    }
+    result.val = validity;
+    return result;
+}
+
+
+compress_combine_slide slide_down(int board[4][4]) {
+    compress_combine_slide result1, result2, result3, result;
+    result1 = compress_down(board);
+    result2 = combine_down(result1.b);
+    result.val = result1.val || result2.val;
+    result3 = compress_down(result2.b);
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            result.b[i][j] = result3.b[i][j];
+    }
+    return result;
+}
