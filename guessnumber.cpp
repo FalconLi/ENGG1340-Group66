@@ -10,7 +10,7 @@ using namespace std;
 // Check whether the user input only contains digits
 bool is_digits(string str) {
     for (char ch : str) {
-        if (!isdigit(ch)) {
+        if (!isdigit(ch) && ch != '-') {
             return false;
         }
     }
