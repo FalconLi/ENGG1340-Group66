@@ -1,3 +1,23 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+
+// Check whether the user input only contains digits
+bool is_digits(string str) {
+    for (char ch : str) {
+        if (!isdigit(ch)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 // Fetch the previous timestamp and continue calculate how much time is used.
 string timeuse(time_t time, time_t t1) {
     int x = (time - t1) / 60;
