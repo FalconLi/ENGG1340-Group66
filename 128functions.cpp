@@ -467,3 +467,104 @@ compress_combine_slide slide_down(int board[4][4]) {
     }
     return result;
 }
+
+
+int main() {
+
+    HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
+    
+    int board[4][4] = { 0 };
+
+    // list for generating random numbers in the board
+    int randomarr[10] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 4 };
+
+    // list to check whether the player's input is valid
+    char validarr[5] = { 'a', 'w', 's', 'd', 'e' };
+
+    Welcome();
+
+    // creates and prints the random starting board
+    createRandom(board, randomarr);
+    while (true) {
+        char direction = chooseDirection();
+        compress_combine_slide result;
+
+        // check whether the input is valid
+        if(find(begin(validarr), end(validarr), direction) == end(validarr)) {
+            SetConsoleTextAttribute(col, 6);
+            cout << "Invalid input, please choose direction again." << endl;
+            SetConsoleTextAttribute(col, 7);
+            printboard(board);
+            continue;
+        }
+
+        // exit
+        if (direction == 'e') {
+            SetConsoleTextAttribute(col, 4);
+            cout << "GAME OVER!!!" << endl;
+            SetConsoleTextAttribute(col, 7);
+            break;
+        }
+
+        // slide left
+        else if (direction == 'a')
+            result = slide_left(board);
+
+        // slide right
+        else if (direction == 'd')
+            result = slide_right(board);
+
+        // slide up
+        else if (direction == 'w')
+            result = slide_up(board);
+        
+        // slide down
+        else if (direction == 's')
+            result = slide_down(board);
+
+        // When nothing in the board has changed, neither compressed nor combined -> slide direction invalid
+        if (result.val == false) {
+            SetConsoleTextAttribute(col, 6);
+            cout << "Invalid direction, please choose direction again." << endl;
+            SetConsoleTextAttribute(col, 7);
+            printboard(board);
+            continue;
+        }
+        
+        // silde direction valid
+        else if (result.val = true) {
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++)
+                    board[i][j] = result.b[i][j];
+            }
+
+            // add randomly 2 or 4 to an empty cell
+            randomNumberCell(board, randomarr);
+
+            // check whether win or lose or continue
+            string status = check_game_status(board);
+
+            if (status == "Continue") {
+                cout << status << endl;
+                continue;
+            }
+
+            if (status == "CONGRATULATIONS!!!") {
+                cout << endl;
+                SetConsoleTextAttribute(col, 2);
+                cout << status << endl;
+                SetConsoleTextAttribute(col, 7);
+                break;
+            }
+
+            if (status == "GAME OVER!!!") {
+                cout << endl;
+                SetConsoleTextAttribute(col, 4);
+                cout << status << endl;
+                SetConsoleTextAttribute(col, 7);
+                break;
+            }
+
+        }
+    }
+}
