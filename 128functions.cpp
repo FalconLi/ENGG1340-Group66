@@ -9,8 +9,13 @@
 using namespace std;
 
 
-//This is the welcome function to start the game 512
+//This is the welcome function to start the game 128
 void Welcome() {
+
+    // to change color of text
+    HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(col, 9);
+
     cout << "*****************************************************************" << endl;
     cout << "***************     Welcome to the 128-Game      ****************" << endl;
     cout << "**                                                             **" << endl;
@@ -25,6 +30,7 @@ void Welcome() {
     cout << "*****************************************************************" << endl;
     cout << "Press enter to proceed to the commands ";
     cin.ignore();
+    SetConsoleTextAttribute(col, 6);
     cout << "Command are as follows: " << endl;
     cout << "\tSlide Left:  a" << endl;
     cout << "\tSlide Right: d" << endl;
@@ -33,35 +39,56 @@ void Welcome() {
     cout << "\tExit:        e" << endl;
     cout << "Press enter to start the game ";
     cin.ignore();
+    SetConsoleTextAttribute(col, 7);
     cout << "TIME TO START!!!!" << endl;
     cout << endl;
 }
 
 
 void printboard(int board[4][4]) {
+    HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
+
     // we use nested for-loops to print the 2D array board 
     for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (board[i][j] == 2)
-                system("Color A0");
-            if (board[i][j] == 4)
-                system("Color B0");
-            if (board[i][j] == 8)
-                system("Color C0");
-            if (board[i][j] == 16)
-                system("Color D0");
-            if (board[i][j] == 32)
-                system("Color E0");
-            if (board[i][j] == 64)
-                system("Color 90");
-            if (board[i][j] == 128)
-                system("Color F0");
-            cout << setw(3) << board[i][j] << " " << endl;
+        for (int j = 0; j < 3; j++) {
+            if (board[i][j] == 0)
+                SetConsoleTextAttribute(col, 7);
+            else if (board[i][j] == 2)
+                SetConsoleTextAttribute(col, 10);
+            else if (board[i][j] == 4)
+                SetConsoleTextAttribute(col, 11);
+            else if (board[i][j] == 8)
+                SetConsoleTextAttribute(col, 12);
+            else if (board[i][j] == 16)
+                SetConsoleTextAttribute(col, 13);
+            else if (board[i][j] == 32)
+                SetConsoleTextAttribute(col, 14);
+            else if (board[i][j] == 64)
+                SetConsoleTextAttribute(col, 9);
+            else if (board[i][j] == 128)
+                SetConsoleTextAttribute(col, 6);
+            cout << setw(3) << board[i][j] << " ";
         }
+        if (board[i][3] == 0)
+            SetConsoleTextAttribute(col, 7);
+        else if (board[i][3] == 2)
+            SetConsoleTextAttribute(col, 10);
+        else if (board[i][3] == 4)
+            SetConsoleTextAttribute(col, 11);
+        else if (board[i][3] == 8)
+            SetConsoleTextAttribute(col, 12);
+        else if (board[i][3] == 16)
+            SetConsoleTextAttribute(col, 13);
+        else if (board[i][3] == 32)
+            SetConsoleTextAttribute(col, 14);
+        else if (board[i][3] == 64)
+            SetConsoleTextAttribute(col, 9);
+        else if (board[i][3] == 128)
+            SetConsoleTextAttribute(col, 6);
+        cout << setw(3) << board[i][3] << endl;
     }
-    system("Color 07");
+    SetConsoleTextAttribute(col, 7);
 }
-
 
 // This function chooses two random cells to change them to 2 or 4 randomly to create the starting board.
 void createRandom(int board[4][4], int randomarr[]) {
@@ -121,11 +148,11 @@ void randomNumberCell(int board[4][4], int randomarr[]) {
 
 
 // check game status
-string check_game_over(int board[4][4]) {
-    // Once there is 2048 in the board, the player wins immediately.
+string check_game_status(int board[4][4]) {
+    // Once there is 128 in the board, the player wins immediately.
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-            if (board[i][j] == 2048) {
+            if (board[i][j] == 128) {
                 return "CONGRATULATIONS!!!";
             }
         }
