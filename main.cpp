@@ -3,12 +3,13 @@
 #include<string>
 using namespace std;
 #include<ctime>
+//#include "mathgame.h"
 
 ifstream fin;
 string line;
 int ct_map_line=0, pos_colomn, pos_line;
 string map_array[25];
-char destination, character, move_direction;
+char destination, character, move_direction, door = '$', open_door = '_';
 string barrier[1] = {"-|"};
 
 void background() {
@@ -20,7 +21,7 @@ void initialize() {
 	map_array[16] = "--";
 	// set destination
 	destination = map_array[16][1];
-	character = 'X';
+	character = char(23);
 
 	fin.open("initial_map.txt");
 	while (getline(fin, line))
@@ -93,6 +94,37 @@ void move() {
 
 void enter_secret() {
 	//give site to enter the secret.
+	if (/*(site 1) + 1 */ == character && /*(site 1)*/ == door)
+	{
+		if mathgame();
+			//(site 1) = open_door;
+	}
+
+	else if (/*(site 2) + 1 */ == character && /*(site 2)*/ == door)
+		if guessnumgame();
+			//(site 2) = open_door;
+	}
+
+	else if (/*(site 3) + 1 */ == character && /*(site 3)*/ == door)
+		if hangmangame();
+			//(site 3) = open_door;
+	}
+
+	else if (/*(site 4) + 1 */ == character && /*(site 4)*/ == door)
+		if hangmangame();
+		//(site 4) = open_door;
+	}
+
+	else if (/*(site 5) + 1 */ == character && /*(site 5)*/ == door)
+		if hangmangame();
+		//(site 5) = open_door;
+	}
+
+	else if (/*(site 6) + 1 */ == character && /*(site 6)*/ == door)
+		if hangmangame();
+		//(site 6) = open_door;
+	}
+
 }
 
 void last_word() {
