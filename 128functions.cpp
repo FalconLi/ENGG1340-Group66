@@ -499,6 +499,7 @@ bool main() {
             SetConsoleTextAttribute(col, 7);
             printboard(board);
             cout << "Continue" << endl;
+            cout << endl;
             continue;
         }
 
@@ -507,6 +508,7 @@ bool main() {
             SetConsoleTextAttribute(col, 4);
             cout << "GAME OVER!!!" << endl;
             SetConsoleTextAttribute(col, 7);
+            cout << endl;
             break;
         }
 
@@ -533,6 +535,7 @@ bool main() {
             SetConsoleTextAttribute(col, 7);
             printboard(board);
             cout << "Continue" << endl;
+            cout << endl;
             continue;
         }
         
@@ -551,6 +554,7 @@ bool main() {
 
             if (status == "Continue") {
                 cout << status << endl;
+                cout << endl;
                 continue;
             }
 
@@ -559,6 +563,7 @@ bool main() {
                 SetConsoleTextAttribute(col, 2);
                 cout << status << endl;
                 SetConsoleTextAttribute(col, 7);
+                cout << endl;
                 break;
             }
 
@@ -567,6 +572,7 @@ bool main() {
                 SetConsoleTextAttribute(col, 4);
                 cout << status << endl;
                 SetConsoleTextAttribute(col, 7);
+                cout << endl;
                 break;
             }
 
