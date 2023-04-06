@@ -469,7 +469,7 @@ compress_combine_slide slide_down(int board[4][4]) {
 }
 
 
-int main() {
+bool main() {
     
     // to store the game status
     string status;
