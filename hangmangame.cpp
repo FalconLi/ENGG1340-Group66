@@ -34,8 +34,8 @@ choose_word choose()
 void state(int number_of_chances) {
 	string countdown = { "|O/|\\|/\\" };
 	string current;
-	current = countdown.substr(0, n);
-	for (int i = 0; i < 9 - n; i++)
+	current = countdown.substr(0, number_of_chances);
+	for (int i = 0; i < 9 - number_of_chances; i++)
 	{
 		current.insert(current.length() - 1, " ");
 	}
@@ -53,9 +53,9 @@ void state(int number_of_chances) {
 int main() {
 	//intro
 	cout << "Win the hangman game if you want to get the key to leave Chiwah. " << endl;
-	cout<< "Guess the character in the word correctly otherwise the hangman will die and you can't get the key! "<<endl;
-	cout<< "Hints: start by guessing common letters like vowels, or s, t, and n." <<endl;
-	
+	cout << "Guess the character in the word correctly otherwise the hangman will die and you can't get the key! " << endl;
+	cout << "Hints: start by guessing common letters like vowels, or s, t, and n." << endl;
+
 	// generate the random word
 	choose_word target_word = choose();
 
@@ -72,11 +72,11 @@ int main() {
 	//set the 8 chances of the game;
 	while (guesses->length() < 8)
 	{
-		cout<< "Guess a character/ exit : " <<endl;
+		cout << "Guess a character/ exit : " << endl;
 		cin >> guess;
 
 		//change all letters in guess into lowercase.
-		if (guess >= "A" && guess <= "Z" && guess.length()==1)
+		if (guess >= "A" && guess <= "Z" && guess.length() == 1)
 			guess += 32;
 
 		if (guess == "exit")
@@ -130,5 +130,17 @@ int main() {
 			cout << "invalid input" << endl;
 			continue;
 		}
+
+		cout << "Guessed wrong letters: " << guesses << endl;
+
+		if (now.find('_') == -1)
+		{
+			cout << "You Win!" << endl;
+			return true;
+		}
+
 	}
+
+	cout << "You Lost TAT" << endl;
+	return false;
 }
