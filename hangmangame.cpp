@@ -1,8 +1,9 @@
 #include<iostream>
 #include <cstdlib>
+
 using namespace std;
 
-int number_of_chances;
+int number_of_chances, guesses_length;
 string now, guess;
 
 
@@ -27,7 +28,6 @@ choose_word choose()
 	//automatically set the seed
 	srand(time(NULL));
 	data.randword = choice[data.database - 1][rand() % 8];
-
 	return data;
 }
 
@@ -58,19 +58,21 @@ int main() {
 
 	// generate the random word
 	choose_word target_word = choose();
-
 	//start
 	now = "";
 	for (int i = 0; i < target_word.randword.length(); i++)
 	{
-		now.insert(target_word.randword.length() - 1, "_");
+		now.insert(0, "_");
 	}
+
+
 
 	//initialize all the guesses by the player.
 	string guesses[8] = {};
+	guesses_length = 0;
 
 	//set the 8 chances of the game;
-	while (guesses->length() < 8)
+	while (guesses_length < 8)
 	{
 		cout << "Guess a character/ exit : " << endl;
 		cin >> guess;
@@ -91,10 +93,10 @@ int main() {
 			if (target_word.randword.find(guess) != -1)
 			{
 				// if the character was guessed before
-				if (guesses->find(guess) != -1)
+				if (find(guesses,guesses+guesses_length,guess)!=guesses+guesses_length)
 				{
 					cout << "you have tried " << guess << " before!" << endl;
-					continue;
+
 				}
 
 				else
@@ -106,32 +108,45 @@ int main() {
 							now[i] = guess[0];
 					}
 
-					continue;
+
 				}
 			}
 
-			else if (guesses->find(guess) != -1)
+
+			// if the word is already guessed.
+			else if (find(guesses, guesses + guesses_length, guess) != guesses + guesses_length)
 			{
 				cout << "you have tried " << guess << " before!" << endl;
-				continue;
+
 			}
 
 			else
 			{
-				guesses[guesses->length()] = guess;
+				guesses_length++;
+				guesses[guesses_length - 1] = guess;
 				cout << "Incorrect!" << endl;
-				cout << "You have " << 8 - guesses->length() << " chances left!" << endl;
-				state(guesses->length());
+				cout << "You have " << 8 - guesses_length << " chances left!" << endl;
+				state(guesses_length+1);
 			}
 		}
 
+		//show the invalid input
 		else
 		{
 			cout << "invalid input" << endl;
-			continue;
+
 		}
 
-		cout << "Guessed wrong letters: " << guesses << endl;
+		for (int i = 0; i < now.length(); i++)
+			cout << now[i];
+		cout << endl;
+
+		//show the guessed wrong letters
+		cout << "Guessed wrong letters: ";
+		for (int i = 0; i < guesses_length; i++)
+			cout << guesses[i] << " ";
+
+		cout << endl;
 
 		if (now.find('_') == -1)
 		{
