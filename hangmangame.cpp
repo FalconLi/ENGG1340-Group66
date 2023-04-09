@@ -52,7 +52,7 @@ void state(int number_of_chances) {
 
 int main() {
 	//intro
-	cout << "Win the hangman game if you want to get the key to leave Chiwah. " << endl;
+	cout << "Win the hangman game if you want to get the key to leave Haking Wong. " << endl;
 	cout << "Guess the character in the word correctly otherwise the hangman will die and you can't get the key! " << endl;
 	cout << "Hints: start by guessing common letters like vowels, or s, t, and n." << endl;
 
