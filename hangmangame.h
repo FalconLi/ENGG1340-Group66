@@ -6,4 +6,4 @@
 struct choose_word;
 choose_word choose();
 void state(int number_of_chances);
-
+int hangmangame();
