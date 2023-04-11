@@ -3,7 +3,7 @@
 #include<string>
 #include<ctime>
 //#include "mathgame.h"
-//#include "hangmangame.h"
+#include "hangmangame.h"
 //#include "Stonegame.h"
 //#include "guessnumber.h"
 //#include "matchnum.h"
