@@ -1,9 +1,14 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-using namespace std;
 #include<ctime>
 //#include "mathgame.h"
+//#include "hangmangame.h"
+//#include "Stonegame.h"
+//#include "guessnumber.h"
+//#include "matchnum.h"
+//#include ".h"
+using namespace std;
 
 ifstream fin;
 string line;
@@ -42,7 +47,7 @@ void show_map() {
 
 void move() {
 	//change the place in array.
-	cout << "Where you wanna escape?" << endl;
+	cout << "Where do you wanna escape?" << endl;
 	cin >> move_direction;
 
 	//find current location
@@ -87,7 +92,6 @@ void move() {
 	else
 	{
 		cout << "No way to go!" << endl;
-		move();
 	}
 }
 
