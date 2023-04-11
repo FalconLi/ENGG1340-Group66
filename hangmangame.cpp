@@ -3,13 +3,13 @@
 
 using namespace std;
 
-int number_of_chances, guesses_length;
+int number_of_chances, guesses_length, data_trans;
 string now, guess;
 
 
 struct choose_word
 {
-	int database;
+	string database;
 	string randword;
 };
 
@@ -20,14 +20,19 @@ choose_word choose()
 	choose_word data;
 	cout << "Input wordguess set (1 for fruits, 2 for sports): " << endl;
 	cin >> data.database;
-	while (data.database != 1 && data.database != 2)
+	while (data.database != "1" && data.database != "2")
 	{
 		cout << "Input wordguess set (1 for fruits, 2 for sports): " << endl;
 		cin >> data.database;
 	}
 	//automatically set the seed
 	srand(time(NULL));
-	data.randword = choice[data.database - 1][rand() % 8];
+
+	if (data.database == "1")
+		data_trans = 1;
+	else if (data.database == "2")
+		data_trans = 2;
+	data.randword = choice[data_trans - 1][rand() % 8];
 	return data;
 }
 
@@ -50,7 +55,7 @@ void state(int number_of_chances) {
 }
 
 
-int main() {
+int hangmangame() {
 	//intro
 	cout << "Win the hangman game if you want to get the key to leave Haking Wong. " << endl;
 	cout << "Guess the character in the word correctly otherwise the hangman will die and you can't get the key! " << endl;
@@ -93,7 +98,7 @@ int main() {
 			if (target_word.randword.find(guess) != -1)
 			{
 				// if the character was guessed before
-				if (find(guesses,guesses+guesses_length,guess)!=guesses+guesses_length)
+				if (find(guesses, guesses + guesses_length, guess) != guesses + guesses_length)
 				{
 					cout << "you have tried " << guess << " before!" << endl;
 
@@ -126,7 +131,7 @@ int main() {
 				guesses[guesses_length - 1] = guess;
 				cout << "Incorrect!" << endl;
 				cout << "You have " << 8 - guesses_length << " chances left!" << endl;
-				state(guesses_length+1);
+				state(guesses_length + 1);
 			}
 		}
 
