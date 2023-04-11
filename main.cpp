@@ -14,7 +14,7 @@ ifstream fin;
 string line;
 int ct_map_line = 0, pos_colomn, pos_line;
 string map_array[27];
-char destination, character, move_direction, door = '$', open_door = '_';
+char destination, character, move_direction, door = '\\', open_door = ' ', site_1, site_1_trigger;
 string barrier[1] = { "-|_#/\\HW312Lift" };
 
 void background() {
@@ -48,6 +48,7 @@ void show_map() {
 void move() {
 	//change the place in array.
 	cout << "Where do you wanna escape?" << endl;
+	cout << "Your movement: ";
 	cin >> move_direction;
 
 	//find current location
@@ -96,12 +97,20 @@ void move() {
 }
 
 void enter_secret() {
+	//update the site status.
+	site_1 = map_array[7][81];
+	site_1_trigger = map_array[8][81];
+
 	//give site to enter the secret.
-	//if (/*(site 1) + 1 */ == character && /*(site 1)*/ == door)
-	//{
-		//if mathgame();
-			//(site 1) = open_door;
-	//}
+	if (site_1_trigger == character && site_1 == door)
+	{
+		if (hangmangame())
+		{
+			site_1 = open_door;
+			map_array[7][81] = site_1;
+		}
+
+	}
 
 	//else if (/*(site 2) + 1 */ == character && /*(site 2)*/ == door)
 		//if guessnumgame();
@@ -139,7 +148,14 @@ void last_word() {
 int main() {
 	background();
 	initialize();
+
+	//fixed places
 	destination = map_array[21][84];
+	site_1 = map_array[7][81];
+	site_1_trigger = map_array[8][81];
+
+
+
 	//decide whether the character reaches the destination
 	while (character != destination)
 	{
