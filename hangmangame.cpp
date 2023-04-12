@@ -57,10 +57,12 @@ void state(int number_of_chances) {
 
 int hangmangame() {
 	//intro
+	system("CLS");
 	cout << "Win the hangman game if you want to get the key to leave Haking Wong. " << endl;
+	system("pause");
 	cout << "Guess the character in the word correctly otherwise the hangman will die and you can't get the key! " << endl;
-	cout << "Hints: start by guessing common letters like vowels, or s, t, and n." << endl;
-
+	system("pause");
+	system("CLS");
 	// generate the random word
 	choose_word target_word = choose();
 	//start
@@ -79,8 +81,9 @@ int hangmangame() {
 	//set the 8 chances of the game;
 	while (guesses_length < 8)
 	{
-		cout << "Guess a character/ exit : " << endl;
+		cout << "Guess a character/ hint / exit : " << endl;
 		cin >> guess;
+		system("CLS");
 
 		//change all letters in guess into lowercase.
 		if (guess >= "A" && guess <= "Z" && guess.length() == 1)
@@ -90,6 +93,12 @@ int hangmangame() {
 		{
 			cout << "you quit!";
 			return false;
+		}
+
+		if (guess == "hint")
+		{
+			cout << "Hints: start by guessing common letters like vowels, or s, t, and n." << endl;
+			continue;
 		}
 
 		else if (guess.length() == 1 && guess >= "a" && guess <= "z")
