@@ -83,44 +83,55 @@ int mathgame() {
         {"d / dx((7x + 3x + 10x) - sinx) = ", "20 - cosx", "5"} };
     while (count < 11) {
         int n;
-        std::cout << "Question number? (1-50)/exit(0): ";
-        std::cin >> n;
+        cout << "Question number? (1-50)/exit(0): ";
+        cin >> n;
         while (!(n >= 0 && n <= 50)) {
-            std::cout << "Invalid input!try again!" << endl;
-            std::cin >> n;
+            cout << "Invalid input!try again!" << endl;
+            cin >> n;
         }
         if (n == 0) {
-            std::cout << "BYE!!NO KEY\nBACK TO YOUR ASSIGNMENTS!!" << endl;
+            cout << "BYE!!NO KEY\nBACK TO YOUR ASSIGNMENTS!!" << endl;
             break;
         }
-        cout << questions[n-1][0] << endl;
+        cout << questions[n - 1][0] << endl;
         string ans;
         cout << "Your answer is: ";
-        std::cin >> ans;
-        if (ans == questions[n-1][1]) {
+        cin >> ans;
+        if (ans == questions[n - 1][1]) {
             int x;
             stringstream ss;
-            ss << questions[n-1][2];
+            ss << questions[n - 1][2];
             ss >> x;
             count += x;
             cout << "-->Correct<--" << endl;
+            system("pause");
+            system("CLS");
         }
         else {
-            std::cout << "-->Wrong<--" << endl;
-            std::cout << "The correct answer is: " << questions[n-1][1] << endl;
+            cout << "-->Wrong<--" << endl;
+            cout << "The correct answer is: " << questions[n - 1][1] << endl;
+            system("pause");
+            system("CLS");
         }
-        std::cout << "Total marks : " << count << endl;
+        cout << "Total marks : " << count << endl;
     }
 
     if (count >= 11) {
         cout << "Congratulations!!!!" << endl;
+        system("pause");
+        system("CLS");
     }
 
     return count;
 }
 
 
-int main() {
+int matchnum() {
+    system("CLS");
     show_rule();
-    mathgame();
+    int mark = mathgame();
+    if (mark >= 11)
+        return 1;
+    else return 0;
+
 }
