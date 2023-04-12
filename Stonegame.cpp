@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cstdlib>   // include random
-#include <ctime>     
+#include <ctime>   
+#include <string>
+#include <sstream>
+#include <cctype>
 #include <vector>
 
 using namespace std;
@@ -61,7 +64,7 @@ bool canWin(int n) {
     }
 
     vector<bool> dp(n + 1);
-  
+
     dp[2] = true;
     dp[3] = true;
     dp[4] = true;
@@ -74,25 +77,53 @@ bool canWin(int n) {
     return dp[n];
 }
 
+bool isinteger(string s) {
+    //This function tries to avoid the input error(not an integer)
+    try {
+        stoi(s);  
+        // try to transfer s to an interger
+        return true;  
+        // true
+    }
+    catch (const invalid_argument& e) {
+        // if it is not an integer, return false.
+        return false;  
+    }
+}
 
 int play() {
     //Show the rule first.
     show();
 
-    int numStones;
+    string numstones;
     cout << "Enter the number of stones(10~100)(0 to exit): ";
-    cin >> numStones;
+    cin >> numstones;
 
     //0 to exit game.
-    if (numStones == 0) {
-        cout << "Bye Bye!!!" << endl;
-        return 0;
+
+    //avoid invalid input
+    while (!isinteger(numstones)) {
+        cout << "Invalide input, please try again" << endl;
+        cin >> numstones;
+        if (numstones == "0") {
+            cout << "Bye Bye!!!" << endl;
+            return 0;
+        }
     }
+
+    int numStones;
+    numStones = stoi(numstones);
+    
 
     while (!(numStones <= 100 && numStones >= 10)) {
         cout << "Invalide input, please try again" << endl;
         cin >> numStones;
+        if (numStones == 0) {
+            cout << "Bye Bye!!!" << endl;
+            return 0;
+        }
     }
+
 
     if (canWin(numStones)) {
         cout << endl << "----->The current player has a win strategy.<-----" << endl << endl;
@@ -102,14 +133,23 @@ int play() {
         cout << endl << "----->The current player doesn't have a win strategy.<-----" << endl << endl;
     }
 
+    //begin the game
     bool isPlayerTurn = true;
     while (numStones > 0) {
         cout << "There are " << numStones << " stones left." << endl;
 
         if (isPlayerTurn) {
-            int playerMove;
+            string playermove;
             cout << "Enter your move (1-3)(0 to exit): ";
-            cin >> playerMove;
+            cin >> playermove;
+
+            while (!isinteger(playermove)) {
+                cout << "Invalide input, please try again" << endl;
+                cin >> playermove;
+            }
+
+            int playerMove;
+            playerMove = stoi(playermove);
 
             while (playerMove != 0 && playerMove != 1 && playerMove != 2 && playerMove != 3) {
                 cout << "Invalid input, please try again." << endl;
@@ -128,7 +168,7 @@ int play() {
             cout << endl;
         }
         else {
-            // 电脑玩家随机选择 1 到 3 个石头
+            // the computer will choose 1-3 randomly.
             int computerMove = rand() % 3 + 1;
             numStones -= computerMove;
             cout << "The computer takes " << computerMove << " stones." << endl;
