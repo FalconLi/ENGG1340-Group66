@@ -1,12 +1,15 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#include<ctime>
+#include<ctime>   
+#include <sstream>
+#include <cctype>
+#include <vector>
 //#include "mathgame.h"
 #include "hangmangame.h"
-//#include "Stonegame.h"
+#include "Stonegame.h"
 //#include "guessnumber.h"
-//#include "matchnum.h"
+#include "matchnum.h"
 //#include ".h"
 using namespace std;
 
@@ -14,7 +17,7 @@ ifstream fin;
 string line;
 int ct_map_line = 0, pos_colomn, pos_line;
 string map_array[27];
-char destination, character, move_direction, door = '\\', open_door = ' ', site_1, site_1_trigger;
+char destination, character, move_direction, door = '\\', door_2 = '/', open_door = ' ', site_1, site_1_trigger, site_2, site_2_trigger, site_3, site_3_trigger, site_4, site_4_trigger, site_5, site_5_trigger, site_6, site_6_trigger, play_or_not;
 string barrier[1] = { "-|_#/\\HW312Lift" };
 
 void background() {
@@ -100,42 +103,94 @@ void enter_secret() {
 	//update the site status.
 	site_1 = map_array[7][81];
 	site_1_trigger = map_array[8][81];
+	site_2 = map_array[10][43];
+	site_2_trigger = map_array[9][43];
+	site_3 = map_array[18][67];
+	site_3_trigger = map_array[18][66];
+	site_4 = map_array[0][0];
+	site_4_trigger = map_array[0][0];
+	site_5 = map_array[0][0];
+	site_5_trigger = map_array[0][0];
+	site_6 = map_array[0][0];
+	site_6_trigger = map_array[0][0];
 
 	//give site to enter the secret.
 	if (site_1_trigger == character && site_1 == door)
 	{
-		if (hangmangame())
+		cout << "Enter? y/n: ";
+		cin >> play_or_not;
+		if (play_or_not == 'y')
 		{
-			site_1 = open_door;
-			map_array[7][81] = site_1;
+			if (hangmangame())
+			{
+				site_1 = open_door;
+				map_array[7][81] = site_1;
+			}
 		}
 
 	}
 
-	//else if (/*(site 2) + 1 */ == character && /*(site 2)*/ == door)
-		//if guessnumgame();
-			//(site 2) = open_door;
-	//}
+	else if (site_2_trigger == character && site_2 == door_2)
+	{
+		cout << "Enter? y/n: ";
+		cin >> play_or_not;
+		if (play_or_not == 'y')
+		{
+			if (Stonegame())
+			{
+				site_2 = open_door;
+				map_array[10][43] = site_2;
+			}
+		}
 
-	//else if (/*(site 3) + 1 */ == character && /*(site 3)*/ == door)
-		//if hangmangame();
-			//(site 3) = open_door;
-	//}
+	}
+	
+	else if (site_3_trigger == character && site_3 == door)
+	{
+		cout << "Enter? y/n: ";
+		cin >> play_or_not;
+		if (play_or_not == 'y')
+		{
+			if (matchnum())
+			{
+				site_3 = open_door;
+				map_array[18][67] = site_3;
+			}
+		}
 
-	//else if (/*(site 4) + 1 */ == character && /*(site 4)*/ == door)
-		//if hangmangame();
-		//(site 4) = open_door;
-	//}
+	}
 
-	//else if (/*(site 5) + 1 */ == character && /*(site 5)*/ == door)
-		//if hangmangame();
-		//(site 5) = open_door;
-	//}
+	/*
+	else if (site_4_trigger == character && site_4 == door)
+	{
+		if (game())
+		{
+			site_4 = open_door;
+			map_array[0][0] = site_4;
+		}
 
-	//else if (/*(site 6) + 1 */ == character && /*(site 6)*/ == door)
-		//if hangmangame();
-		//(site 6) = open_door;
-	//}
+	}
+
+	else if (site_5_trigger == character && site_5 == door)
+	{
+		if (game())
+		{
+			site_5 = open_door;
+			map_array[0][0] = site_5;
+		}
+
+	}
+
+	else if (site_6_trigger == character && site_6 == door)
+	{
+		if (game())
+		{
+			site_6 = open_door;
+			map_array[0][0] = site_6;
+		}
+
+	}
+	*/
 
 }
 
@@ -151,15 +206,13 @@ int main() {
 
 	//fixed places
 	destination = map_array[21][84];
-	site_1 = map_array[7][81];
-	site_1_trigger = map_array[8][81];
 
 
 
 	//decide whether the character reaches the destination
 	while (character != destination)
 	{
-
+		system("CLS");
 		show_map();
 		move();
 		enter_secret();
