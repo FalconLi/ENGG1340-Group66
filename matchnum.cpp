@@ -21,14 +21,16 @@ void show_rule() {
     string x;
     cout << "TYPE --ok-- TO CONTINUE: ";
     cin >> x;
+    system("CLS");
     while (x != "ok") {
         cout << "TYPE --ok-- TO CONTINUE: ";
         cin >> x;
+        system("CLS");
     }
     int count = 0;
 }
 
-bool isinteger(string s) {
+bool Isinteger(string s) {
     //This function tries to avoid the input error(not an integer)
     try {
         stoi(s);
@@ -102,7 +104,7 @@ int mathgame() {
         string n;
         cout << "Question number? (1-50)/exit(0): ";
         cin >> n;
-        while (!isinteger(n)) {
+        while (!Isinteger(n)) {
             cout << "Invalide input, please try again" << endl;
             cin >> n;
             if (n == "0") {
@@ -123,7 +125,7 @@ int mathgame() {
         }
         cout << questions[num - 1][0] << endl;
         string ans;
-        cout << "Your answer is: (no need to input a space)";
+        cout << "Your answer is: (no need to input a space)" << endl;
         cin >> ans;
         if (ans == questions[num - 1][1]) {
             int x;
@@ -132,27 +134,34 @@ int mathgame() {
             ss >> x;
             count += x;
             cout << "-->Correct<--" << endl;
-          
+            system("pause");
+            system("CLS");
         }
         else {
             cout << "-->Wrong<--" << endl;
             cout << "The correct answer is: " << questions[num - 1][1] << endl;
-          
+            system("pause");
+            system("CLS");
+
         }
         cout << "Total marks : " << count << endl;
+        system("pause");
+        system("CLS");
     }
 
     if (count >= 11) {
         cout << "Congratulations!!!!" << endl;
-\
-      
+        system("pause");
+        system("CLS");
+
     }
 
     return count;
 }
 
 
-int main() {
+int matchnum() {
+    system("CLS");
     show_rule();
     int mark = mathgame();
     if (mark >= 11)
