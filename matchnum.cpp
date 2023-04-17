@@ -71,16 +71,16 @@ int mathgame() {
         {"4!*5 = ", "120", "3"},
         {"5*4*3!(!=factorial) = ", "120", "3"},
         {"7*4*10 = ", "280", "3"},
-        {"d / dx(8x + 2x ^ 3) = ", "8 + 6x ^ 2", "5"},
-        {"d / dx(sinx + cosx + tanx) = ", "cosx - sinx + (secx) ^ 2", "5"},
-        {"d / dx(4 - 9x + 6x ^ 3) = ", " - 9 + 18x ^ 2", "5" },
-        {"d / dx(-secx + cosx) = ", " - secxtanx - sinx", "5" },
-        {"Integrate(5 + 2x) = ", "5x + x ^ 2 + C", "5"},
-        {"Integrate(sinx - cosx + 4x) = ", "- cosx - sinx + 2x ^ 2 + C", "5"},
-        {"Integrate((secx) ^ 2 + cosx) = ", "tanx + sinx + C", "5"},
-        {"Integrate(10 - (cscx) ^ 2) = ", "10x + cotx + C", "5"},
+        {"d / dx(8x + 2x ^ 3) = ", "8+6x^2", "5"},
+        {"d / dx(sinx + cosx + tanx) = ", "cosx-sinx+(secx) ^ 2", "5"},
+        {"d / dx(4 - 9x + 6x ^ 3) = ", " - 9+18x^2", "5" },
+        {"d / dx(-secx + cosx) = ", " - secxtanx-sinx", "5" },
+        {"Integrate(5 + 2x) = ", "5x+x^2+C", "5"},
+        {"Integrate(sinx - cosx + 4x) = ", "- cosx-sinx+2x^2+C", "5"},
+        {"Integrate((secx) ^ 2 + cosx) = ", "tanx+sinx+C", "5"},
+        {"Integrate(10 - (cscx) ^ 2) = ", "10x+cotx+C", "5"},
         {"d / dx(3 + 4 + 6x ^ 2) = ", "12x", "5"},
-        {"d / dx((7x + 3x + 10x) - sinx) = ", "20 - cosx", "5"} };
+        {"d / dx((7x + 3x + 10x) - sinx) = ", "20-cosx", "5"} };
     while (count < 11) {
         int n;
         cout << "Question number? (1-50)/exit(0): ";
@@ -95,7 +95,7 @@ int mathgame() {
         }
         cout << questions[n - 1][0] << endl;
         string ans;
-        cout << "Your answer is: ";
+        cout << "Your answer is: (no need to input a space)";
         cin >> ans;
         if (ans == questions[n - 1][1]) {
             int x;
