@@ -1,6 +1,8 @@
-#include <iostream>
+#include <iostream>  
 #include <string>
 #include <sstream>
+#include <cctype>
+
 using namespace std;
 
 
@@ -25,6 +27,21 @@ void show_rule() {
     }
     int count = 0;
 }
+
+bool isinteger(string s) {
+    //This function tries to avoid the input error(not an integer)
+    try {
+        stoi(s);
+        // try to transfer s to an interger
+        return true;
+        // true
+    }
+    catch (const invalid_argument& e) {
+        // if it is not an integer, return false.
+        return false;
+    }
+}
+
 // Core of game
 int mathgame() {
 
@@ -82,52 +99,60 @@ int mathgame() {
         {"d / dx(3 + 4 + 6x ^ 2) = ", "12x", "5"},
         {"d / dx((7x + 3x + 10x) - sinx) = ", "20-cosx", "5"} };
     while (count < 11) {
-        int n;
+        string n;
         cout << "Question number? (1-50)/exit(0): ";
         cin >> n;
-        while (!(n >= 0 && n <= 50)) {
+        while (!isinteger(n)) {
+            cout << "Invalide input, please try again" << endl;
+            cin >> n;
+            if (n == "0") {
+                cout << "Bye Bye!!!" << endl;
+                return 0;
+            }
+        }
+        int num;
+        num = stoi(n);
+        while (!(num >= 0 && num <= 50)) {
             cout << "Invalid input!try again!" << endl;
             cin >> n;
+            num = stoi(n);
         }
-        if (n == 0) {
+        if (num == 0) {
             cout << "BYE!!NO KEY\nBACK TO YOUR ASSIGNMENTS!!" << endl;
             break;
         }
-        cout << questions[n - 1][0] << endl;
+        cout << questions[num - 1][0] << endl;
         string ans;
         cout << "Your answer is: (no need to input a space)";
         cin >> ans;
-        if (ans == questions[n - 1][1]) {
+        if (ans == questions[num - 1][1]) {
             int x;
             stringstream ss;
-            ss << questions[n - 1][2];
+            ss << questions[num - 1][2];
             ss >> x;
             count += x;
             cout << "-->Correct<--" << endl;
-            system("pause");
-            system("CLS");
+          
         }
         else {
             cout << "-->Wrong<--" << endl;
-            cout << "The correct answer is: " << questions[n - 1][1] << endl;
-            system("pause");
-            system("CLS");
+            cout << "The correct answer is: " << questions[num - 1][1] << endl;
+          
         }
         cout << "Total marks : " << count << endl;
     }
 
     if (count >= 11) {
         cout << "Congratulations!!!!" << endl;
-        system("pause");
-        system("CLS");
+\
+      
     }
 
     return count;
 }
 
 
-int matchnum() {
-    system("CLS");
+int main() {
     show_rule();
     int mark = mathgame();
     if (mark >= 11)
