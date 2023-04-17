@@ -5,12 +5,12 @@
 #include <sstream>
 #include <cctype>
 #include <vector>
-//#include "mathgame.h"
+//#include "2048.h"
 #include "hangmangame.h"
 #include "Stonegame.h"
-//#include "guessnumber.h"
+#include "guessnumber.h"
 #include "matchnum.h"
-//#include ".h"
+//#include "piggame.h"
 using namespace std;
 
 ifstream fin;
@@ -93,6 +93,17 @@ void move() {
 		map_array[pos_line][pos_colomn] = ' ';
 	}
 
+	else if (move_direction == 't')
+	{
+		int li, col;
+		cout << "where to transport" << endl;
+
+		cin >> li >> col;
+		map_array[li][col] = character;
+		map_array[pos_line][pos_colomn] = ' ';
+
+	}
+
 	else
 	{
 		cout << "No way to go!" << endl;
@@ -107,8 +118,8 @@ void enter_secret() {
 	site_2_trigger = map_array[9][43];
 	site_3 = map_array[18][67];
 	site_3_trigger = map_array[18][66];
-	site_4 = map_array[0][0];
-	site_4_trigger = map_array[0][0];
+	site_4 = map_array[17][44];
+	site_4_trigger = map_array[17][43];
 	site_5 = map_array[0][0];
 	site_5_trigger = map_array[0][0];
 	site_6 = map_array[0][0];
@@ -160,17 +171,21 @@ void enter_secret() {
 
 	}
 
-	/*
+	
 	else if (site_4_trigger == character && site_4 == door)
 	{
-		if (game())
+		cout << "Enter? y/n: ";
+		cin >> play_or_not;
+		if (play_or_not == 'y')
 		{
-			site_4 = open_door;
-			map_array[0][0] = site_4;
+			if (guessnumber())
+			{
+				site_4 = open_door;
+				map_array[17][44] = site_4;
+			}
 		}
-
 	}
-
+	/*
 	else if (site_5_trigger == character && site_5 == door)
 	{
 		if (game())
