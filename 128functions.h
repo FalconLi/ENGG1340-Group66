@@ -1,6 +1,5 @@
 //128functions.h
-#ifndef 128FUNCTIONS_H
-#define 128FUNCTIONS_H
+
 
 #include <iostream>
 #include <string>
@@ -42,4 +41,3 @@ compress_combine_slide slide_down(int board[4][4]);
 bool main_128();
 
 
-#endif
