@@ -5,7 +5,7 @@
 #include <ctime>
 #include <stdlib.h>
 #include <windows.h>
-#include <unistd.h>
+
 using namespace std;
 
 
@@ -121,7 +121,7 @@ char chooseDirection() {
 // This function is used to randomly put 2 or 4 to a randomly chosen cell after each step.
 void randomNumberCell(int board[4][4], int randomarr[]) {
     srand(time(NULL));
-    bool b = true; 
+    bool b = true;
     int x;
     while (b) {
         x = rand() % 4; // choose a random line in the array
@@ -142,7 +142,7 @@ void randomNumberCell(int board[4][4], int randomarr[]) {
     }
 
     board[x][y] = randomarr[rand() % 10]; // choose a random value from randarr and assign it to the cell
-    
+
     printboard(board);
 }
 
@@ -218,11 +218,11 @@ compress_combine_slide compress_left(int board[4][4]) {
 
                 // when something has changed, validity becomes true
                 if (j != position) {
-                    validity = true; 
+                    validity = true;
                 }
 
                 // when board[i][0] (the first cell of this line) is occupied, position becomes 1 (the second cell of this line)
-                position++; 
+                position++;
             }
         }
     }
@@ -242,7 +242,7 @@ compress_combine_slide combine_left(int board[4][4]) {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 3; j++) {
             if (board[i][j] == board[i][j + 1] && board[i][j] != 0) {
-                
+
                 // the number of the left cell becomes twice the original number
                 board[i][j] = board[i][j] * 2;
 
@@ -470,12 +470,12 @@ compress_combine_slide slide_down(int board[4][4]) {
 
 
 bool main_128() {
-    
+
     // to store the game status
     string status;
 
     HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
-    
+
     int board[4][4] = { 0 };
 
     // list for generating random numbers in the board
@@ -493,7 +493,7 @@ bool main_128() {
         compress_combine_slide result;
 
         // check whether the input is valid
-        if(find(begin(validarr), end(validarr), direction) == end(validarr)) {
+        if (find(begin(validarr), end(validarr), direction) == end(validarr)) {
             SetConsoleTextAttribute(col, 6);
             cout << "Invalid input, please choose direction again." << endl;
             SetConsoleTextAttribute(col, 7);
@@ -523,7 +523,7 @@ bool main_128() {
         // slide up
         else if (direction == 'w')
             result = slide_up(board);
-        
+
         // slide down
         else if (direction == 's')
             result = slide_down(board);
@@ -538,7 +538,7 @@ bool main_128() {
             cout << endl;
             continue;
         }
-        
+
         // silde direction valid
         else if (result.val = true) {
             for (int i = 0; i < 4; i++) {
