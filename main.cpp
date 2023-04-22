@@ -182,7 +182,7 @@ void enter_secret() {
 			if (guessnumber())
 			{
 				site_4 = open_door;
-				map_array[7][88] = site_4;
+				map_array[17][44] = site_4;
 			}
 		}
 	}
@@ -195,13 +195,10 @@ void enter_secret() {
 		{
 			if (main_128())
 			{
-				cout << "yes!" << endl;
-				system("pause");
 				site_5 = open_door;
-				map_array[17][44] = site_5;
+				map_array[7][88] = site_5;
 			}
-			cout << "no!"<< endl;
-			system("pause");
+
 		}
 
 	}
