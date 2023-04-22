@@ -5,7 +5,8 @@
 #include <sstream>
 #include <cctype>
 #include <vector>
-//#include "2048.h"
+
+#include "128functions.h"
 #include "hangmangame.h"
 #include "Stonegame.h"
 #include "guessnumber.h"
@@ -120,8 +121,8 @@ void enter_secret() {
 	site_3_trigger = map_array[18][66];
 	site_4 = map_array[17][44];
 	site_4_trigger = map_array[17][43];
-	site_5 = map_array[0][0];
-	site_5_trigger = map_array[0][0];
+	site_5 = map_array[7][88];
+	site_5_trigger = map_array[6][88];
 	site_6 = map_array[0][0];
 	site_6_trigger = map_array[0][0];
 
@@ -181,21 +182,31 @@ void enter_secret() {
 			if (guessnumber())
 			{
 				site_4 = open_door;
-				map_array[17][44] = site_4;
+				map_array[7][88] = site_4;
 			}
 		}
 	}
-	/*
+	
 	else if (site_5_trigger == character && site_5 == door)
 	{
-		if (game())
+		cout << "Enter? y/n: ";
+		cin >> play_or_not;
+		if (play_or_not == 'y')
 		{
-			site_5 = open_door;
-			map_array[0][0] = site_5;
+			if (main_128())
+			{
+				cout << "yes!" << endl;
+				system("pause");
+				site_5 = open_door;
+				map_array[17][44] = site_5;
+			}
+			cout << "no!"<< endl;
+			system("pause");
 		}
 
 	}
 
+	/*
 	else if (site_6_trigger == character && site_6 == door)
 	{
 		if (game())
