@@ -7,7 +7,7 @@
 #include <windows.h>
 
 using namespace std;
-
+string status;
 
 //This is the welcome function to start the game 128
 void Welcome() {
@@ -550,7 +550,7 @@ bool main_128() {
             randomNumberCell(board, randomarr);
 
             // check whether win or lose or continue
-            string status = check_game_status(board);
+            status = check_game_status(board);
 
             if (status == "Continue") {
                 cout << status << endl;
@@ -578,6 +578,5 @@ bool main_128() {
 
         }
     }
-    return status == "CONGRATULATIONS!!!";
+    return (status == "CONGRATULATIONS!!!");
 }
-
