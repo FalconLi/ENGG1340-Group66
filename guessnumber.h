@@ -1,4 +1,6 @@
-#pragma once
+//guessnumber.h
+#ifndef GUESSNUMBER_H
+#define GUESSNUMBER_H
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
