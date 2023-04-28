@@ -553,7 +553,7 @@ bool choice(){
     cout<<"For each opportunity, two road with different events will be given. Try your best to expand your army!"<<endl;
     cout <<"Enter 1, you will choose the left road." << endl;
     cout <<"Enter any other number, you will choose the right road." << endl;
-    cout <<"If you entered a character, you will be regarded as inputting nothing and thus " << endl;
+    cout <<"If you entered a character, you will be regarded as inputting nothing and thus get the exceed-time punishment. " << endl;
     char chrubbish;
     while((chrubbish=getchar())!='\n' && chrubbish!=EOF);
     sleep(5);
