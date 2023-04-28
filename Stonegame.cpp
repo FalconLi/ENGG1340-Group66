@@ -2,7 +2,7 @@
 #include <cstdlib>   // include random
 #include <ctime>   
 #include <string>
-#include <sstream>
+//#include <sstream>
 #include <cctype>
 #include <vector>
 
@@ -195,7 +195,7 @@ int play() {
     return 0;
 }
 
-int main() {
+int Stonegame() {
 
     play();
 
