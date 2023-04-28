@@ -32,9 +32,10 @@ string timeuse(time_t time, time_t t1) {
 
 
 // Main function of minigame guess the number, given 't1' as the starting timestamp in the main function
-bool guessnumber(time_t t1) {
+bool guessnumber() {
     cout << "There is a random number between 1-20 (1 & 20 included), try to guess it and you will have a key.\n"
         << "You only have 2 minutes!" << endl;
+    time_t t1 = time(NULL);
     
     // initialize the random number generator with the current time, so that the seed is different every time
     srand(time(NULL)); 
