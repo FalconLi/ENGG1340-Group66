@@ -10,21 +10,32 @@ using namespace std;
 
 void show_rule() {
     //show the rules of the game.
+    cout << "\033[5;36m**************************************************" << endl;
+    cout << "  __        __   _                          " << endl;
+    cout << "  \\ \\      / /__| | ___ ___  _ __ ___   ___ " << endl;
+    cout << "   \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\" << endl;
+    cout << "    \\ V  V /  __/ | (_| (_) | | | | | |  __/" << endl;
+    cout << "     \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___|" << endl;
+    cout << endl;
+    cout << "**************************************************" << endl;
+    cout << endl;
+    cout << "\033[0m";
+	
     cout << "                                      I LOVE MATH\nINSTRUCTION:\n"
         "This game may involve calculus\nQ1-20 carry 1 marks each\n"
-        "Q21-40 carry 3 marks each\nQ41-50 carry 5 marks each\nGet 11 marks to have a key\n"
+        "Q21-40 carry 3 marks each\nQ41-50 carry 5 marks each\nGet 11 marks to win the game\n"
         "You cannot choose the same question more than one time\n"
-        "If you cannot handle the game, type e to leave the game after the game start but you will lost a key=_=\n"
+        "If you cannot handle the game, type e to leave the game=_=\n"
         "For calculus question, the answer should be the same sequence"
         " and format as the question e.g. d/dx(-2x+3x^3)=-2+9x^2\n"
-        "You Are NOT ALLOW To Use CALCULATOR";
+        "You Are NOT ALLOWED To Use The CALCULATOR";
     string x;
-    cout << "TYPE --ok-- TO CONTINUE: ";
-    cin >> x;
+    cout << "Press Enter to continue";
+    cin.ignore();
     system("clear");
     while (x != "ok") {
-        cout << "TYPE --ok-- TO CONTINUE: ";
-        cin >> x;
+        cout << "Press Enter to continue";
+        cin.ignore();
         system("clear");
     }
     int count = 0;
@@ -105,10 +116,12 @@ int mathgame() {
         cout << "Question number? (1-50)/exit(0): ";
         cin >> n;
         while (!Isinteger(n)) {
-            cout << "Invalide input, please try again" << endl;
+            cout << "Invalid input, please try again" << endl;
             cin >> n;
             if (n == "0") {
                 cout << "Bye Bye!!!" << endl;
+		cout << "\nPress Enter to return to the map.";
+    		cin.ignore();
                 return 0;
             }
         }
@@ -121,6 +134,8 @@ int mathgame() {
         }
         if (num == 0) {
             cout << "BYE!!NO KEY\nBACK TO YOUR ASSIGNMENTS!!" << endl;
+	    cout << "\nPress Enter to return to the map.";
+    	    cin.ignore();
             break;
         }
         cout << questions[num - 1][0] << endl;
@@ -134,27 +149,20 @@ int mathgame() {
             ss >> x;
             count += x;
             cout << "-->Correct<--" << endl;
-            cout<<"Press Enter to return to the map!"<<endl;
-            cin.ignore();
-            system("clear");
         }
         else {
             cout << "-->Wrong<--" << endl;
             cout << "The correct answer is: " << questions[num - 1][1] << endl;
-            cout<<"Press Enter to return to the map!"<<endl;
-            cin.ignore();
-            system("clear");
-
         }
         cout << "Total marks : " << count << endl;
-        cout<<"Press Enter to return to the map!"<<endl;
+        cout<<"\nPress Enter to continue"<<endl;
         cin.ignore();
         system("clear");
     }
 
     if (count >= 11) {
         cout << "Congratulations!!!!" << endl;
-        cout<<"Press Enter to return to the map!"<<endl;
+        cout<<"\nPress Enter to return to the map."<<endl;
         cin.ignore();
 	system("clear");
     }
