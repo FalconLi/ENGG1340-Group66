@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <stdlib.h>
+#include <algorithm>
 
 using namespace std;
 string status;
@@ -26,7 +27,7 @@ void Welcome() {
     cout << "**                                                             **" << endl;
     cout << "***************           GOOD LUCK!!!           ****************" << endl;
     cout << "*****************************************************************" << endl;
-    cout << "Press Enter to proceed to the commands ";
+    cout << "Press enter to proceed to the commands ";
     cin.ignore();
     cout << "\033[33mCommand are as follows: " << endl;
     cout << "\tSlide Left:  a" << endl;
@@ -34,7 +35,7 @@ void Welcome() {
     cout << "\tSlide Up:    w" << endl;
     cout << "\tSlide Down:  s" << endl;
     cout << "\tExit:        e" << endl;
-    cout << "Press Enter to start the game ";
+    cout << "Press enter to start the game ";
     cin.ignore();
     cout << "\033[0mTIME TO START!!!!" << endl;
     cout << endl;
@@ -568,8 +569,6 @@ bool main_128() {
 
         }
     }
-    cout << "\033[33mPress Enter to return to the map ";
-    cin.ignore();
-    cout << "\033[0m";
     return (status == "CONGRATULATIONS!!!");
 }
+
