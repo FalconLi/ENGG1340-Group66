@@ -78,5 +78,5 @@ bool guessnumber(time_t t1) {
         cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
         cin >> guess;
     }
-    return guess == to_string(number)
+    return guess == to_string(number);
 }
