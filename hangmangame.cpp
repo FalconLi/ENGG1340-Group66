@@ -60,9 +60,17 @@ void state(int number_of_chances) {
 int hangmangame() {
 	//intro
 	system("clear");
-	cout << "Win the hangman game if you want to get the key to leave Haking Wong. " << endl;
-	cout << "Press Enter to Continue..."; 
-        cin.ignore(); 
+	cout << "\033[5;36m**************************************************" << endl;
+    cout << "  __        __   _                          " << endl;
+    cout << "  \\ \\      / /__| | ___ ___  _ __ ___   ___ " << endl;
+    cout << "   \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\" << endl;
+    cout << "    \\ V  V /  __/ | (_| (_) | | | | | |  __/" << endl;
+    cout << "     \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___|" << endl;
+    cout << endl;
+    cout << "**************************************************" << endl;
+    cout << endl;
+    cout << "\033[0m";
+	cout << "Win the hangman game if you want to be closer get the key to leave Haking Wong. " << endl;
 	cout << "Guess the character in the word correctly otherwise the hangman will die and you can't get the key! " << endl;
 	cout << "Press Enter to Continue...";
         cin.ignore();
@@ -169,11 +177,15 @@ int hangmangame() {
 		if (now.find('_') == -1)
 		{
 			cout << "You Win!" << endl;
+			cout << "Press Enter to return to the map.";
+    			cin.ignore();
 			return true;
 		}
 
 	}
 
 	cout << "You Lost TAT" << endl;
+	cout << "Press Enter to return to the map.";
+    	cin.ignore();
 	return false;
 }
