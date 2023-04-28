@@ -33,10 +33,6 @@ void show_rule() {
     cout << "Press Enter to continue";
     cin.ignore();
     system("clear");
-    while (x != "ok") {
-        cout << "Press Enter to continue";
-        cin.ignore();
-        system("clear");
     }
     int count = 0;
 }
