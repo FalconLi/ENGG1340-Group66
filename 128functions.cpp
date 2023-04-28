@@ -579,6 +579,8 @@ bool main_128() {
 
         }
     }
+    cout << "Press Enter to return to the map.";
+    cin.ignore();
     return (status == "CONGRATULATIONS!!!");
 }
 
