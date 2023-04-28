@@ -7,7 +7,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <stdlib.h>
-#include <unistd.h>
 using namespace std;
 
 void Welcome();
