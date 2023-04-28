@@ -151,8 +151,9 @@ int mathgame() {
             cout << "The correct answer is: " << questions[num - 1][1] << endl;
         }
         cout << "Total marks : " << count << endl;
-        cout<<"\nPress Enter to continue"<<endl;
-        cin.ignore();
+        cout<<"\nInput 1 to continue"<<endl;
+	int x;
+        cin >> x;
         system("clear");
     }
 
