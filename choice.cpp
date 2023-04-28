@@ -495,7 +495,11 @@ int main(){
     cout<<"  ░   ░     ░     ░ ░   ░        ░ ░ ░ ▒  ░      ░      ░   " <<endl;
     cout<<"    ░       ░  ░    ░  ░░ ░          ░ ░         ░      ░  ░" <<endl;
     cout<<"                        ░                                   " <<endl;
-    cout<<"This is the trial of braveness, Young warriors.\nTry to pass this "<<endl;
+    sleep(2);
+    system("clear");
+    cout<<" "<<endl;
+    cout<<"This trial test your ability to seize the fleeting opportunity."<<endl;
+    cout<<"Enter anything to continue"<<endl;
     //complete story
     cout<< "Now, choose your army first."<<endl;
     cout<< "Press 0, you get: hogriders"<<endl;
