@@ -220,6 +220,7 @@ void enter_secret() {
 
 		}
 	}
+}
 void last_word() {
 	cout << "Zhong lin is a lianainao" << endl;
 	cout << "haha" << endl;
