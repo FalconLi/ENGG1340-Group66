@@ -7,7 +7,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <termios.h>
+#include <unistd.h>
 #include "choice.h"
+
 using namespace std;
 
 int getch()
@@ -40,6 +42,7 @@ int getch()
 
 void press_key()
 {
+   printf("Press enter to continue...\n");
    getch();
 }
 
@@ -186,6 +189,7 @@ int getVal(int defaultValue)
             //printf("get value:%d\n", val); why cancelling this line make the program work?...
             exit(0);
         }
+        return val;
     });
 
     this_thread::sleep_for(chrono::seconds(2));
@@ -532,7 +536,6 @@ bool choice(){
     system("clear");
     cout<<" "<<endl;
     cout<<"This trial test your ability to seize the fleeting opportunity."<<endl;
-    printf("Press enter to continue...\n");
     press_key();
     
     //complete story
@@ -551,10 +554,9 @@ bool choice(){
     cout <<"Enter 1, you will choose the left road." << endl;
     cout <<"Enter any other number, you will choose the right road." << endl;
     cout <<"If you entered a character, you will be regarded as inputting nothing and thus get the exceed-time punishment. " << endl;
-    printf("Press enter to continue...\n");
     char chrubbish;
     while((chrubbish=getchar())!='\n' && chrubbish!=EOF);
-    sleep(2);
+    sleep(5);
     press_key();
     showtime("start");
     //
@@ -582,20 +584,22 @@ bool choice(){
     if(nu==1){
         cout<<"HAHA!Kunzhiyin is a useless creature and by no means can be your army. You fail!"<<endl;
         cout<<"You know~~~, choice is way more important than effort!"<<endl;
-        cout<<"Press any key to continue."<<endl;
-        press_key();
+	cout<<"Press any key to return."<<endl;
+	press_key();
         return false;
     }
     if (per<0.2){
         cout<<"You havent even achieve 20%!\nYou failed! "<<endl;
-        cout<<"Press any key to continue."<<endl;
-        press_key();
+	cout<<"Press any key to return."<<endl;
+	press_key();
         return false;
+
     }
     else{
         cout<<"Good job!"<<endl;
-        cout<<"Press any key to continue."<<endl;
-        press_key();
+	cout<<"Press any key to return."<<endl;
+	press_key();
+
         return true;
     }
     //if(playerlist[nu].armynum>0){
@@ -606,4 +610,15 @@ bool choice(){
     //    cout<<"You failed...Errr..."<<endl;
     //    return false;
     //}
+
+    pause();
+    pause();
+    pause();
+    pause();
+    pause();
+    pause();
+    pause();
+    pause();
+    pause();
+    return true;
 }
