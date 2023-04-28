@@ -15,17 +15,13 @@
 //#include "piggame.h"
 using namespace std;
 
-ifstream fin;
+ifstream fin, finin;
 string line;
 int ct_map_line = 0, pos_colomn, pos_line, score=0;
 string map_array[27];
 char character, move_direction, door = '\\', door_2 = '/', open_door = ' ', site_1, site_1_trigger, site_2, site_2_trigger, site_3, site_3_trigger, site_4, site_4_trigger, site_5, site_5_trigger, site_6, site_6_trigger, play_or_not;
 string barrier[1] = { "-|_#/\\HW312Lift" };
 
-void background() {
-	cout << "Zhong lin is a lianainao" << endl;
-	cout << "haha" << endl;
-}
 
 void initialize() {
 	//initialize the map, maybe getline from file.
@@ -234,15 +230,21 @@ void enter_secret() {
 		}
 	}
 }
-void last_word() {
-	cout << "Zhong lin is a lianainao" << endl;
-	cout << "haha" << endl;
+void open_word() {
+	
+	finin.open("story_2.txt");
+	string line_2;
+	while (getline(finin, line_2))
+	{
+		cout<<line_2<<endl;
+	}
+	finin.close();
 }
 
 
 
 int main() {
-	background();
+	open_word();
 	initialize();
 
 	//fixed places
@@ -266,8 +268,9 @@ int main() {
 		}
 		if (map_array[20][85] == character)
 		{
+			cout<<"You got your desired major"<<endl;
+			cin.ignore();			
 			break;
 		}
 	}
-	last_word();
 }
