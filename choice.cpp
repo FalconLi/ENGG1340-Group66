@@ -611,15 +611,8 @@ bool choice(){
     //    cout<<"You failed...Errr..."<<endl;
     //    return false;
     //}
-
-    pause();
-    pause();
-    pause();
-    pause();
-    pause();
-    pause();
-    pause();
-    pause();
-    pause();
+    for (int itr = 0; itr < 9; itr++){
+	    pause();
+    }
     return true;
 }
