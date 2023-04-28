@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <stdlib.h>
-#include <windows.h>
+#include <unistd.h>
 
 using namespace std;
 string status;
