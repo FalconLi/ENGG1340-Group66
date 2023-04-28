@@ -269,7 +269,7 @@ int main() {
 			map_array[21][83] = ' ';
 			final_count++;
 		}
-		if (map_array[20][85] == character)
+		if (map_array[21][85] == character)
 		{
 			cout<<"You got your desired major"<<endl;
 			cin.ignore();			
