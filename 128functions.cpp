@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <stdlib.h>
-#include <unistd.h>
 
 using namespace std;
 string status;
@@ -13,10 +12,9 @@ string status;
 void Welcome() {
 
     // to change color of text
-    HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(col, 9);
+   
 
-    cout << "*****************************************************************" << endl;
+    cout << "\033[1;34m*****************************************************************" << endl;
     cout << "***************     Welcome to the 128-Game      ****************" << endl;
     cout << "**                                                             **" << endl;
     cout << "** 1. Similar to 2048, the aim of the game is to slide cells   **" << endl;
@@ -30,8 +28,7 @@ void Welcome() {
     cout << "*****************************************************************" << endl;
     cout << "Press enter to proceed to the commands ";
     cin.ignore();
-    SetConsoleTextAttribute(col, 6);
-    cout << "Command are as follows: " << endl;
+    cout << "\033[33mCommand are as follows: " << endl;
     cout << "\tSlide Left:  a" << endl;
     cout << "\tSlide Right: d" << endl;
     cout << "\tSlide Up:    w" << endl;
@@ -39,55 +36,50 @@ void Welcome() {
     cout << "\tExit:        e" << endl;
     cout << "Press enter to start the game ";
     cin.ignore();
-    SetConsoleTextAttribute(col, 7);
-    cout << "TIME TO START!!!!" << endl;
+    cout << "\033[0mTIME TO START!!!!" << endl;
     cout << endl;
 }
 
 
 void printboard(int board[4][4]) {
-    HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
-
     // we use nested for-loops to print the 2D array board 
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 3; j++) {
             if (board[i][j] == 0)
-                SetConsoleTextAttribute(col, 7);
+                cout << "\033[0m" << setw(3) << board[i][j] << " ";
             else if (board[i][j] == 2)
-                SetConsoleTextAttribute(col, 10);
+                cout << "\033[1;32m" << setw(3) << board[i][j] << " ";
             else if (board[i][j] == 4)
-                SetConsoleTextAttribute(col, 11);
+                cout << "\033[1;36m" << setw(3) << board[i][j] << " ";
             else if (board[i][j] == 8)
-                SetConsoleTextAttribute(col, 12);
+                cout << "\033[1;31m" << setw(3) << board[i][j] << " ";
             else if (board[i][j] == 16)
-                SetConsoleTextAttribute(col, 13);
+                cout << "\033[1;35m" << setw(3) << board[i][j] << " ";pink
             else if (board[i][j] == 32)
-                SetConsoleTextAttribute(col, 14);
+                cout << "\033[1;33m" << setw(3) << board[i][j] << " ";
             else if (board[i][j] == 64)
-                SetConsoleTextAttribute(col, 9);
+                cout << "\033[1;34m" << setw(3) << board[i][j] << " ";
             else if (board[i][j] == 128)
-                SetConsoleTextAttribute(col, 6);
-            cout << setw(3) << board[i][j] << " ";
+                cout << "\033[33m" << setw(3) << board[i][j] << " ";
         }
         if (board[i][3] == 0)
-            SetConsoleTextAttribute(col, 7);
+            cout << "\033[0m" << setw(3) << board[i][3] << endl;
         else if (board[i][3] == 2)
-            SetConsoleTextAttribute(col, 10);
+            cout << "\033[1;32m" << setw(3) << board[i][3] << endl;
         else if (board[i][3] == 4)
-            SetConsoleTextAttribute(col, 11);
+            cout << "\033[1;36m" << setw(3) << board[i][3] << endl;
         else if (board[i][3] == 8)
-            SetConsoleTextAttribute(col, 12);
+            cout << "\033[1;31m" << setw(3) << board[i][3] << endl;
         else if (board[i][3] == 16)
-            SetConsoleTextAttribute(col, 13);
+            cout << "\033[1;35m" << setw(3) << board[i][3] << endl;
         else if (board[i][3] == 32)
-            SetConsoleTextAttribute(col, 14);
+            cout << "\033[1;33m" << setw(3) << board[i][3] << endl;
         else if (board[i][3] == 64)
-            SetConsoleTextAttribute(col, 9);
+            cout << "\033[1;34m" << setw(3) << board[i][3] << endl;
         else if (board[i][3] == 128)
-            SetConsoleTextAttribute(col, 6);
-        cout << setw(3) << board[i][3] << endl;
+            cout << "\033[33m" << board[i][3] << endl;
     }
-    SetConsoleTextAttribute(col, 7);
+    cout << "\033[0m" ;
 }
 
 // This function chooses two random cells to change them to 2 or 4 randomly to create the starting board.
@@ -474,8 +466,6 @@ bool main_128() {
     // to store the game status
     string status;
 
-    HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
-
     int board[4][4] = { 0 };
 
     // list for generating random numbers in the board
@@ -494,9 +484,9 @@ bool main_128() {
 
         // check whether the input is valid
         if (find(begin(validarr), end(validarr), direction) == end(validarr)) {
-            SetConsoleTextAttribute(col, 6);
+            cout << "\033[33m";
             cout << "Invalid input, please choose direction again." << endl;
-            SetConsoleTextAttribute(col, 7);
+            cout << "\033[0m";
             printboard(board);
             cout << "Continue" << endl;
             cout << endl;
@@ -505,9 +495,9 @@ bool main_128() {
 
         // exit
         if (direction == 'e') {
-            SetConsoleTextAttribute(col, 4);
+            cout << "\033[31m";
             cout << "GAME OVER!!!" << endl;
-            SetConsoleTextAttribute(col, 7);
+            cout << "\033[0m";
             cout << endl;
             break;
         }
@@ -530,9 +520,9 @@ bool main_128() {
 
         // When nothing in the board has changed, neither compressed nor combined -> slide direction invalid
         if (result.val == false) {
-            SetConsoleTextAttribute(col, 6);
+            cout << "\033[33m";
             cout << "Invalid direction, please choose direction again." << endl;
-            SetConsoleTextAttribute(col, 7);
+            cout << "\033[0m";
             printboard(board);
             cout << "Continue" << endl;
             cout << endl;
@@ -560,18 +550,18 @@ bool main_128() {
 
             if (status == "CONGRATULATIONS!!!") {
                 cout << endl;
-                SetConsoleTextAttribute(col, 2);
+                cout << "\033[32m";
                 cout << status << endl;
-                SetConsoleTextAttribute(col, 7);
+                cout << "\033[0m";
                 cout << endl;
                 break;
             }
 
             if (status == "GAME OVER!!!") {
                 cout << endl;
-                SetConsoleTextAttribute(col, 4);
+                cout << "\033[31m";
                 cout << status << endl;
-                SetConsoleTextAttribute(col, 7);
+                cout << "\033[0m";
                 cout << endl;
                 break;
             }
