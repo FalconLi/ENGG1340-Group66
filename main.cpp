@@ -11,6 +11,7 @@
 #include "Stonegame.h"
 #include "guessnumber.h"
 #include "matchnum.h"
+#include "choice.h"
 //#include "piggame.h"
 using namespace std;
 
@@ -22,7 +23,8 @@ char destination, character, move_direction, door = '\\', door_2 = '/', open_doo
 string barrier[1] = { "-|_#/\\HW312Lift" };
 
 void background() {
-	//give the background of the game, fin from file
+	cout << "Zhong lin is a lianainao" << endl;
+	cout << "haha" << endl;
 }
 
 void initialize() {
@@ -123,8 +125,8 @@ void enter_secret() {
 	site_4_trigger = map_array[17][43];
 	site_5 = map_array[7][88];
 	site_5_trigger = map_array[6][88];
-	site_6 = map_array[0][0];
-	site_6_trigger = map_array[0][0];
+	site_6 = map_array[7][77];
+	site_6_trigger = map_array[8][77];
 
 	//give site to enter the secret.
 	if (site_1_trigger == character && site_1 == door)
@@ -156,7 +158,7 @@ void enter_secret() {
 		}
 
 	}
-	
+
 	else if (site_3_trigger == character && site_3 == door)
 	{
 		cout << "Enter? y/n: ";
@@ -172,7 +174,7 @@ void enter_secret() {
 
 	}
 
-	
+
 	else if (site_4_trigger == character && site_4 == door)
 	{
 		cout << "Enter? y/n: ";
@@ -186,7 +188,7 @@ void enter_secret() {
 			}
 		}
 	}
-	
+
 	else if (site_5_trigger == character && site_5 == door)
 	{
 		cout << "Enter? y/n: ";
@@ -202,23 +204,25 @@ void enter_secret() {
 		}
 
 	}
-
-	/*
 	else if (site_6_trigger == character && site_6 == door)
 	{
-		if (game())
+		cout << "Enter? y/n: ";
+		cin >> play_or_not;
+		if (play_or_not == 'y')
 		{
-			site_6 = open_door;
-			map_array[0][0] = site_6;
+			if (choice())
+			{
+				site_6 = open_door;
+				map_array[7][77] = site_6;
+			}
+
+
+
 		}
-
 	}
-	*/
-
-}
-
 void last_word() {
-	//give the final word to say.
+	cout << "Zhong lin is a lianainao" << endl;
+	cout << "haha" << endl;
 }
 
 
