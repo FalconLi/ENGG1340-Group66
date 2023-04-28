@@ -12,7 +12,7 @@ using namespace std;
 
 void show() {
 
-    cout << "**************************************************" << endl;
+    cout << "\033[5;36m**************************************************" << endl;
     cout << "  __        __   _                          " << endl;
     cout << "  \\ \\      / /__| | ___ ___  _ __ ___   ___ " << endl;
     cout << "   \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\" << endl;
@@ -21,6 +21,7 @@ void show() {
     cout << endl;
     cout << "**************************************************" << endl;
     cout << endl;
+    cout << "\033[0m";
 
     //Show the rule of the Stone Game.
     cout << "Here is a game introduction for the game of Stones:" << endl;
