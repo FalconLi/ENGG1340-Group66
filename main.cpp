@@ -5,7 +5,7 @@
 #include <sstream>
 #include <cctype>
 #include <vector>
-
+#include <unistd.h>
 #include "128functions.h"
 #include "hangmangame.h"
 #include "Stonegame.h"
@@ -33,7 +33,7 @@ void initialize() {
 	// set destination
 	character = char(23);
 
-	fin.open("initial_map.txt");
+	fin.open("draft_map.txt");
 	while (getline(fin, line))
 	{
 		map_array[ct_map_line] = line;
@@ -55,10 +55,10 @@ void move() {
 	//change the place in array.
 	cout << "Where do you wanna escape?" << endl;
 	cout << "Your movement: ";
+	cin.clear();
 	cin >> move_direction;
-
 	//find current location
-	for (int i = 0; i <= ct_map_line; i++)
+	for (int i = 0; i < ct_map_line; i++)
 	{
 		//if cannot find character on the line, go to next line
 		if (map_array[i].find(character) == -1)
@@ -125,14 +125,15 @@ void enter_secret() {
 	site_4_trigger = map_array[17][43];
 	site_5 = map_array[7][88];
 	site_5_trigger = map_array[6][88];
-	site_6 = map_array[7][77];
-	site_6_trigger = map_array[8][77];
+	site_6 = map_array[7][78];
+	site_6_trigger = map_array[8][78];
 
 	//give site to enter the secret.
 	if (site_1_trigger == character && site_1 == door)
 	{
 		cout << "Enter? y/n: ";
 		cin >> play_or_not;
+		system("clear");
 		if (play_or_not == 'y')
 		{
 			if (hangmangame())
@@ -148,9 +149,10 @@ void enter_secret() {
 	{
 		cout << "Enter? y/n: ";
 		cin >> play_or_not;
+		system("clear");
 		if (play_or_not == 'y')
 		{
-			if (Stonegame())
+			if (choice())
 			{
 				site_2 = open_door;
 				map_array[10][43] = site_2;
@@ -163,6 +165,7 @@ void enter_secret() {
 	{
 		cout << "Enter? y/n: ";
 		cin >> play_or_not;
+		system("clear");
 		if (play_or_not == 'y')
 		{
 			if (matchnum())
@@ -179,6 +182,7 @@ void enter_secret() {
 	{
 		cout << "Enter? y/n: ";
 		cin >> play_or_not;
+		system("clear");
 		if (play_or_not == 'y')
 		{
 			if (guessnumber())
@@ -193,6 +197,7 @@ void enter_secret() {
 	{
 		cout << "Enter? y/n: ";
 		cin >> play_or_not;
+		system("clear");
 		if (play_or_not == 'y')
 		{
 			if (main_128())
@@ -208,12 +213,13 @@ void enter_secret() {
 	{
 		cout << "Enter? y/n: ";
 		cin >> play_or_not;
+		system("clear");
 		if (play_or_not == 'y')
 		{
-			if (choice())
+			if (Stonegame())
 			{
 				site_6 = open_door;
-				map_array[7][77] = site_6;
+				map_array[7][78] = site_6;
 			}
 
 
@@ -238,9 +244,8 @@ int main() {
 
 
 	//decide whether the character reaches the destination
-	while (character != destination)
-	{
-		system("CLS");
+	while (character != destination){
+		system("clear");
 		show_map();
 		move();
 		enter_secret();

@@ -2,6 +2,7 @@
 #include<iostream>
 #include <cstdlib>
 #include <string>
+#include <algorithm>
 
 struct choose_word;
 choose_word choose();

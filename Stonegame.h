@@ -18,3 +18,4 @@ bool canWin(int n);
 bool isinteger(std::string s);
 
 int Stonegame();
+

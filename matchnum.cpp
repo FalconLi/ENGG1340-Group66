@@ -21,11 +21,11 @@ void show_rule() {
     string x;
     cout << "TYPE --ok-- TO CONTINUE: ";
     cin >> x;
-    system("CLS");
+    system("clear");
     while (x != "ok") {
         cout << "TYPE --ok-- TO CONTINUE: ";
         cin >> x;
-        system("CLS");
+        system("clear");
     }
     int count = 0;
 }
@@ -134,26 +134,29 @@ int mathgame() {
             ss >> x;
             count += x;
             cout << "-->Correct<--" << endl;
-            system("pause");
-            system("CLS");
+            cout<<"Press Enter to return to the map!"<<endl;
+            cin.ignore();
+            system("clear");
         }
         else {
             cout << "-->Wrong<--" << endl;
             cout << "The correct answer is: " << questions[num - 1][1] << endl;
-            system("pause");
-            system("CLS");
+            cout<<"Press Enter to return to the map!"<<endl;
+            cin.ignore();
+            system("clear");
 
         }
         cout << "Total marks : " << count << endl;
-        system("pause");
-        system("CLS");
+        cout<<"Press Enter to return to the map!"<<endl;
+        cin.ignore();
+        system("clear");
     }
 
     if (count >= 11) {
         cout << "Congratulations!!!!" << endl;
-        system("pause");
-        system("CLS");
-
+        cout<<"Press Enter to return to the map!"<<endl;
+        cin.ignore();
+	system("clear");
     }
 
     return count;
@@ -161,11 +164,9 @@ int mathgame() {
 
 
 int matchnum() {
-    system("CLS");
     show_rule();
     int mark = mathgame();
     if (mark >= 11)
         return 1;
     else return 0;
-
 }

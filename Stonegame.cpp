@@ -5,6 +5,7 @@
 //#include <sstream>
 #include <cctype>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -77,7 +78,7 @@ bool canWin(int n) {
     return dp[n];
 }
 
-bool isinteger(string s) {
+bool isinteger(std::string s) {
     //This function tries to avoid the input error(not an integer)
     try {
         stoi(s);  
@@ -95,7 +96,7 @@ int play() {
     //Show the rule first.
     show();
 
-    string numstones;
+    std::string numstones;
     cout << "Enter the number of stones(10~100)(0 to exit): ";
     cin >> numstones;
 
@@ -107,7 +108,7 @@ int play() {
         cin >> numstones;
         if (numstones == "0") {
             cout << "Bye Bye!!!" << endl;
-            return 0;
+            return false;
         }
     }
 
@@ -120,7 +121,7 @@ int play() {
         cin >> numStones;
         if (numStones == 0) {
             cout << "Bye Bye!!!" << endl;
-            return 0;
+            return false;
         }
     }
 
@@ -160,7 +161,7 @@ int play() {
             if (playerMove == 0) {
                 cout << endl;
                 cout << "Bye Bye!!!" << endl;
-                return 0;
+                return false;
             }
 
             numStones -= playerMove;
@@ -182,22 +183,20 @@ int play() {
         cout << " You win! " << endl;
         cout << "**********" << endl;
 
-        return 1;
+        return true;
     }
     else {
         cout << "********************" << endl;
         cout << " The computer wins! " << endl;
         cout << "********************" << endl;
 
-        return 0;
+        return false;
     }
 
-    return 0;
+    return false;
 }
 
 int Stonegame() {
 
-    play();
-
-    return 0;
+    return play();
 }

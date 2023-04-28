@@ -1,6 +1,8 @@
 #include<iostream>
 #include <cstdlib>
-
+#include <string>
+#include <algorithm>
+#include <unistd.h>
 using namespace std;
 
 int number_of_chances, guesses_length, data_trans;
@@ -57,12 +59,14 @@ void state(int number_of_chances) {
 
 int hangmangame() {
 	//intro
-	system("CLS");
+	system("clear");
 	cout << "Win the hangman game if you want to get the key to leave Haking Wong. " << endl;
-	system("pause");
+	cout << "Press Enter to Continue..."; 
+        cin.ignore(); 
 	cout << "Guess the character in the word correctly otherwise the hangman will die and you can't get the key! " << endl;
-	system("pause");
-	system("CLS");
+	cout << "Press Enter to Continue...";
+        cin.ignore();
+	system("clear");
 	// generate the random word
 	choose_word target_word = choose();
 	//start
@@ -83,7 +87,7 @@ int hangmangame() {
 	{
 		cout << "Guess a character/ hint / exit : " << endl;
 		cin >> guess;
-		system("CLS");
+		system("clear");
 
 		//change all letters in guess into lowercase.
 		if (guess >= "A" && guess <= "Z" && guess.length() == 1)
