@@ -213,24 +213,24 @@ int chooseroad(player &a){
             if (val3==0){
                 cout << "Exceed time.You are automatically assigned the left road." << endl;
                 changearmynum(a,-1);
-                cout<<"As punishment, your army decrease by 1."<<endl;
+                cout<<"As punishment, your army decreases by 1."<<endl;
                 return 1;
             }
             else{
-                if (val3==1)cout<<"You have choose the left road."<<endl;
-                else cout<<"You have choose the right road."<<endl;
+                if (val3==1)cout<<"You have chosen the left road."<<endl;
+                else cout<<"You have chosen the right road."<<endl;
                 return val3;
             }
         }
         else{
-            if (val2==1)cout<<"You have choose the left road."<<endl;
-            else cout<<"You have choose the right road."<<endl;
+            if (val2==1)cout<<"You have chosen the left road."<<endl;
+            else cout<<"You have chosen the right road."<<endl;
             return val2;
         }
     }
     else{
-        if (val1==1)cout<<"You have choose the left road."<<endl;
-        else cout<<"You have choose the right road."<<endl;
+        if (val1==1)cout<<"You have chosen the left road."<<endl;
+        else cout<<"You have chosen the right road."<<endl;
         return val1;
     }
 }
