@@ -4,7 +4,7 @@
 #include <ctime>     
 #include <vector>
 #include <cstdlib>
-#include <sstring>
+//#include <sstring>
 #include <cctype>
 
 
@@ -15,3 +15,5 @@ int play();
 bool canWin(int n);
 
 bool isinteger(string s);
+
+int Stonegame();
