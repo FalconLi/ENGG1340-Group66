@@ -27,7 +27,6 @@ void initialize() {
 	//initialize the map, maybe getline from file.
 	map_array[16] = "--";
 	// set destination
-	map_array[20][85] = '+';
 	character = char(23);
 
 	fin.open("draft_map.txt");
@@ -40,6 +39,7 @@ void initialize() {
 
 	//initial character site
 	map_array[20][82] = character;
+	map_array[20][85] = '+';
 }
 
 void show_map() {
@@ -245,6 +245,8 @@ void open_word() {
 
 int main() {
 	open_word();
+	cout<<"Press Enter to continue";
+	cin.ignore();
 	initialize();
 
 	//fixed places
