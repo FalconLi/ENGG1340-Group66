@@ -17,7 +17,7 @@ using namespace std;
 
 ifstream fin, finin;
 string line;
-int ct_map_line = 0, pos_colomn, pos_line, score=0;
+int ct_map_line = 0, pos_colomn, pos_line, score=0, final_count=0;
 string map_array[27];
 char destination, character, move_direction, door = '\\', door_2 = '/', open_door = ' ', site_1, site_1_trigger, site_2, site_2_trigger, site_3, site_3_trigger, site_4, site_4_trigger, site_5, site_5_trigger, site_6, site_6_trigger, play_or_not;
 string barrier[1] = { "-|_#/\\HW312Lift" };
@@ -260,13 +260,14 @@ int main() {
 		show_map();
 		move();
 		enter_secret();
-		if (score >= 5)
+		if (score >= 5 && final_count == 0)
 		{
 			cout<<"Major requirement achieved!"<<endl;
 			cout<<"Please collect your major offer at the elevator!"<<endl;
 			map_array[19][83] = ' ';
 			map_array[20][83] = ' ';
 			map_array[21][83] = ' ';
+			final_count++;
 		}
 		if (map_array[20][85] == character)
 		{
