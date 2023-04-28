@@ -256,10 +256,11 @@ void sbpart(player &a,string b,event eventlist[],int &best){
         right=(rand()%t)+k;
     }
     for (int i=0;i<16;i++){
-        cout<<eventlist[left].picture[i];
+        cout<< "\033[31m" <<eventlist[left].picture[i];
+	cout<< "\033[0m";
         cout<<"     ||     ";
-        cout<<eventlist[right].picture[i]<<endl;
-        
+        cout<< "\033[34m" <<eventlist[right].picture[i]<<endl;
+        cout<< "\033[0m";
     }
     int choicer;
     choicer=chooseroad(a);
