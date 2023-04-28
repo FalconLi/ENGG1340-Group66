@@ -579,8 +579,9 @@ bool main_128() {
 
         }
     }
-    cout << "Press Enter to return to the map.";
+    cout << "\033[33mPress Enter to return to the map.";
     cin.ignore();
+    cout << "\033[0m";
     return (status == "CONGRATULATIONS!!!");
 }
 
