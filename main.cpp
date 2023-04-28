@@ -271,7 +271,7 @@ int main() {
 		}
 		if (map_array[21][85] == character)
 		{
-			cout<<endl<<"Fanfan have successfully passed "<<score<<" out of 6 trials!"<<endl<<"You got your desired major!!!"<<endl<<endl;
+			cout<<endl<<"Fanfan has successfully passed "<<score<<" out of 6 trials!"<<endl<<"He got his desired major!!!"<<endl<<endl;
 			cin.ignore();			
 			break;
 		}
