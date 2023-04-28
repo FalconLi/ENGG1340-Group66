@@ -7,6 +7,7 @@
 //#include <sstring>
 #include <cctype>
 
+using namespace std;
 
 void show();
 
@@ -14,6 +15,6 @@ int play();
 
 bool canWin(int n);
 
-bool isinteger(string s);
+bool isinteger(std::string s);
 
 int Stonegame();
