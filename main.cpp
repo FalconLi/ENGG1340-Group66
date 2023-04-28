@@ -39,7 +39,7 @@ void initialize() {
 
 	//initial character site
 	map_array[20][82] = character;
-	map_array[20][85] = '+';
+	map_array[21][85] = '+';
 }
 
 void show_map() {
