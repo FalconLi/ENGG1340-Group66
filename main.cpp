@@ -19,7 +19,7 @@ ifstream fin, finin;
 string line;
 int ct_map_line = 0, pos_colomn, pos_line, score=0;
 string map_array[27];
-char character, move_direction, door = '\\', door_2 = '/', open_door = ' ', site_1, site_1_trigger, site_2, site_2_trigger, site_3, site_3_trigger, site_4, site_4_trigger, site_5, site_5_trigger, site_6, site_6_trigger, play_or_not;
+char destination, character, move_direction, door = '\\', door_2 = '/', open_door = ' ', site_1, site_1_trigger, site_2, site_2_trigger, site_3, site_3_trigger, site_4, site_4_trigger, site_5, site_5_trigger, site_6, site_6_trigger, play_or_not;
 string barrier[1] = { "-|_#/\\HW312Lift" };
 
 
