@@ -54,7 +54,7 @@ void printboard(int board[4][4]) {
             else if (board[i][j] == 8)
                 cout << "\033[1;31m" << setw(3) << board[i][j] << " ";
             else if (board[i][j] == 16)
-                cout << "\033[1;35m" << setw(3) << board[i][j] << " ";pink
+                cout << "\033[1;35m" << setw(3) << board[i][j] << " ";
             else if (board[i][j] == 32)
                 cout << "\033[1;33m" << setw(3) << board[i][j] << " ";
             else if (board[i][j] == 64)
