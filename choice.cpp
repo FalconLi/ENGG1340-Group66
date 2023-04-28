@@ -166,7 +166,7 @@ void seekbest(int &a,string oper,int by){
     if(a<1)a=1;
 }
 void showinfo(player &a){
-    cout <<"You have "<<a.armynum<<a.army<<"s"<<endl;
+    cout <<"You have "<<a.armynum<<" "<<a.army<<"s"<<endl;
 }
 
 void showbossinfo(boss &a){
@@ -193,7 +193,7 @@ int getVal(int defaultValue)
     });
 
     this_thread::sleep_for(chrono::seconds(2));
-    t1.detach();
+    //t1.detach();
     return val;
 }
 
@@ -581,7 +581,7 @@ bool choice(){
     double per,now;
     now=playerlist[nu].armynum;
     per=(double)now/(double)best;
-    if(nu==2){
+    if(nu==1){
         cout<<"HAHA!Kunzhiyin is a useless creature and by no means can be your army. You fail!"<<endl;
         cout<<"You know~~~, choice is way more important than effort!"<<endl;
         return false;
