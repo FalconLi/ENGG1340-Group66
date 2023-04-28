@@ -17,9 +17,9 @@ using namespace std;
 
 ifstream fin;
 string line;
-int ct_map_line = 0, pos_colomn, pos_line;
+int ct_map_line = 0, pos_colomn, pos_line, score=0;
 string map_array[27];
-char destination, character, move_direction, door = '\\', door_2 = '/', open_door = ' ', site_1, site_1_trigger, site_2, site_2_trigger, site_3, site_3_trigger, site_4, site_4_trigger, site_5, site_5_trigger, site_6, site_6_trigger, play_or_not;
+char character, move_direction, door = '\\', door_2 = '/', open_door = ' ', site_1, site_1_trigger, site_2, site_2_trigger, site_3, site_3_trigger, site_4, site_4_trigger, site_5, site_5_trigger, site_6, site_6_trigger, play_or_not;
 string barrier[1] = { "-|_#/\\HW312Lift" };
 
 void background() {
@@ -31,6 +31,7 @@ void initialize() {
 	//initialize the map, maybe getline from file.
 	map_array[16] = "--";
 	// set destination
+	map_array[20][85] = '+';
 	character = char(23);
 
 	fin.open("draft_map.txt");
@@ -140,6 +141,7 @@ void enter_secret() {
 			{
 				site_1 = open_door;
 				map_array[7][81] = site_1;
+				score++;
 			}
 		}
 
@@ -156,6 +158,7 @@ void enter_secret() {
 			{
 				site_2 = open_door;
 				map_array[10][43] = site_2;
+				score++;
 			}
 		}
 
@@ -172,6 +175,7 @@ void enter_secret() {
 			{
 				site_3 = open_door;
 				map_array[18][67] = site_3;
+				score++;
 			}
 		}
 
@@ -189,6 +193,7 @@ void enter_secret() {
 			{
 				site_4 = open_door;
 				map_array[17][44] = site_4;
+				score++;
 			}
 		}
 	}
@@ -204,6 +209,7 @@ void enter_secret() {
 			{
 				site_5 = open_door;
 				map_array[7][88] = site_5;
+				score++;
 			}
 
 		}
@@ -220,6 +226,7 @@ void enter_secret() {
 			{
 				site_6 = open_door;
 				map_array[7][78] = site_6;
+				score++;
 			}
 
 
@@ -249,6 +256,18 @@ int main() {
 		show_map();
 		move();
 		enter_secret();
+		if (score >= 5)
+		{
+			cout<<"Major requirement achieved!"<<endl;
+			cout<<"Please collect your major offer at the elevator!"<<endl;
+			map_array[19][83] = ' ';
+			map_array[20][83] = ' ';
+			map_array[21][83] = ' ';
+		}
+		if (map_array[20][85] == character)
+		{
+			break;
+		}
 	}
 	last_word();
 }
