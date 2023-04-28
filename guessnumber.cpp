@@ -42,11 +42,12 @@ bool guessnumber() {
     cout << endl;
     cout << "**************************************************" << endl;
     cout << endl;
-    cout << "\033[0m" << endl;
+    cout << "\033[0m";
     
-    cout << "There is a random number between 1-20 (1 & 20 included), try to guess it and you will have a key.\n"
+    cout << "\033[33mThere is a random number between 1-20 (1 & 20 included), try to guess it and you will have a key.\n"
         << "You only have 2 minutes!" << endl;
     cout << "Press Enter to start the game";
+    cout << "\033[0m";
     cin.ignore();
     
     time_t t1 = time(NULL);
@@ -55,13 +56,15 @@ bool guessnumber() {
     srand(time(NULL)); 
     int number = rand() % 20 + 1;
     string guess;
-    cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
+    cout << "\n" << "\033[1;31m" << timeuse(time(NULL), t1) << "\033[0m" << "\nGuess(a number 1-20) or exit(e): ";
     cin >> guess;
     while (guess != "e" && guess != to_string(number)) {
         if (time(NULL) - t1 >= 120) {
             cout << endl;
+            cout << "\033[1;31m";
             cout << timeuse(time(NULL), t1) << endl;
             cout << "Times up!" << endl;
+            cout << "\033[0m";
 
             // even if the player guessed the number right, but if 2 minutes are over, the player has still lost, therefore set guess = "0" (can't be right, since number is between 1 and 20)
             guess = to_string(0);
@@ -69,8 +72,10 @@ bool guessnumber() {
         }
         if (is_digits(guess)) {
             if (stoi(guess) > 20 || stoi(guess) < 1) {
+                cout << "\033[33m";
                 cout << "Invalid number, please guess again." << endl;
-                cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
+                cout << "\033[1;31m";
+                cout << "\n" << timeuse(time(NULL), t1) << "\033[0m" << "\nGuess(a number 1-20) or exit(e): ";
                 cin >> guess;
                 continue;
             }
@@ -85,12 +90,15 @@ bool guessnumber() {
             }
         }
         if (is_digits(guess) == false) {
+            cout << "\033[33m";
             cout << "Invalid input, please guess again." << endl;
-            cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
+            cout << "\033[1;31m";
+            cout << "\n" << timeuse(time(NULL), t1) << "\033[0m" << "\nGuess(a number 1-20) or exit(e): ";
             cin >> guess;
             continue;
         }
-        cout << "\n" << timeuse(time(NULL), t1) << "\nGuess(a number 1-20) or exit(e): ";
+        cout << "\033[1;31m";
+        cout << "\n" << timeuse(time(NULL), t1) << "\033[0m" << "\nGuess(a number 1-20) or exit(e): ";
         cin >> guess;
     }
     return guess == to_string(number);
