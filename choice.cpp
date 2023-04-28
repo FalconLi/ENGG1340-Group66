@@ -306,7 +306,7 @@ void idiotpart(player &a,boss bosslist[]){
 
 }
 
-int main(){
+bool choice(){
     boss bosslist[7]={
         {"Barbarian King","Golden Sword",500,5,true},
         {"Mountain Golem","The Heart of the Mountain",2000,4,true},
