@@ -183,17 +183,20 @@ int play() {
         cout << "**********" << endl;
         cout << " You win! " << endl;
         cout << "**********" << endl;
-
+        cout << "\nPress Enter to return to the map.";
+        cin.ignore();
         return true;
     }
     else {
         cout << "********************" << endl;
         cout << " The computer wins! " << endl;
         cout << "********************" << endl;
-
+        cout << "\nPress Enter to return to the map.";
+        cin.ignore();
         return false;
     }
-
+    cout << "\nPress Enter to return to the map.";
+    cin.ignore();
     return false;
 }
 
