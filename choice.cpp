@@ -612,7 +612,7 @@ bool choice(){
     //    return false;
     //}
     for (int itr = 0; itr < 9; itr++){
-	    pause();
+		pause();
     }
     return true;
 }
