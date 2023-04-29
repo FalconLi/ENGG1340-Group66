@@ -42,7 +42,13 @@ int getch()
 
 void press_key()
 {
-   printf("\nPress enter to continue...\n");
+   printf("\nPress Enter to continue...\n");
+   getch();
+}
+
+void press_key_end()
+{
+   printf("\nPress Enter to return to the map.\n");
    getch();
 }
 
@@ -167,6 +173,7 @@ void seekbest(int &a,string oper,int by){
 }
 void showinfo(player &a){
     cout <<"You have "<<a.armynum<<" "<<a.army<<"s"<<endl;
+    cout << endl;
 }
 
 void showbossinfo(boss &a){
@@ -549,7 +556,8 @@ bool choice(){
             //complete army briefing
     int nu;
     cin>>nu;
-    cout<< "You have choose "<<playerlist[nu].army<<endl;
+    cout<< "You have choosen "<<playerlist[nu].army<<endl;
+    cout<< endl;
     //playerlist[nu]
     cout<<"You step on the road to royal. From now on, you will encounter multiple opportunities."<<endl;
     cout<<"For each opportunity, two road with different events will be given. Try your best to expand your army!"<<endl;
@@ -587,20 +595,20 @@ bool choice(){
         cout<<"HAHA! Kunzhiyin is a useless creature and can by no means be your army. You failed!"<<endl;
         cout<<"You know, choice is way more important than effort sometimes!"<<endl;
 	cout << endl; 
-	press_key();
+	press_key_end();
         return false;
     }
     if (per<0.2){
         cout<<"You haven't even achieved 20%!\nYou failed! "<<endl;
 	cout << endl; 
-	press_key();
+	press_key_end();
         return false;
 
     }
     else{
         cout<<"Good job!"<<endl;
 	cout << endl; 
-	press_key();
+	press_key_end();
 
         return true;
     }
