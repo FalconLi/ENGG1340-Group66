@@ -234,11 +234,13 @@ void open_word() {
 	
 	finin.open("story_2.txt");
 	string line_2;
+	cout<<"\033[1;6m";
 	while (getline(finin, line_2))
 	{
 		cout<<line_2<<endl;
-		sleep(1);
+		sleep(2);
 	}
+	cout<<"\033[0m";
 	finin.close();
 }
 
