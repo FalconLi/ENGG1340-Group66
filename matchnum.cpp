@@ -34,6 +34,7 @@ void show_rule() {
     string x;
     cout << "\nPress Enter to continue";
     cin.ignore();
+    cin.ignore();
     system("clear");
     
     int count = 0;
