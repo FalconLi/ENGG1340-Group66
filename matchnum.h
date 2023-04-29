@@ -4,7 +4,8 @@
 #include <cctype>
 #include <string>
 #include <sstream>
-#include <sstream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
