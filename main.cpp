@@ -238,7 +238,12 @@ void open_word() {
 	while (getline(finin, line_2))
 	{
 		cout<<line_2<<endl;
-		sleep(2);
+		if (line_2 == "\n") {
+		    sleep(1);
+		}
+		else {
+		    sleep(2);
+		}
 	}
 	cout<<"\033[0m";
 	finin.close();
