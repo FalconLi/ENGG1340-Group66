@@ -580,9 +580,9 @@ bool main_128() {
 
         }
     }
-    cout << "\033[33mPress Enter to return to the map.";
+    cout << "Press Enter to return to the map.";
     cin.ignore();
-    cout << "\033[0m";
+    cin.ignore();
     return (status == "CONGRATULATIONS!!!");
 }
 
