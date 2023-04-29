@@ -18,6 +18,7 @@ struct boss;
 struct event;
 int getch();
 void press_key();
+void press_key_end();
 void showtime(string w);
 void changearmynum(player &a, double factor);
 void roadbonus(player &a, string oper, int by);
