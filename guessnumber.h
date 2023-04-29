@@ -1,6 +1,7 @@
 //guessnumber.h
 #ifndef GUESSNUMBER_H
 #define GUESSNUMBER_H
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -11,7 +12,6 @@ using namespace std;
 
 bool is_digits(string str);
 bool guessnumber();
-
 
 #endif
 
