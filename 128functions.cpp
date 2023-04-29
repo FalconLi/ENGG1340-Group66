@@ -39,6 +39,7 @@ void Welcome() {
     cout << "*****************************************************************" << endl;
     cout << "\nPress enter to proceed to the commands ";
     cin.ignore();
+    cin.ignore();
     cout << "\033[33mCommand are as follows: " << endl;
     cout << "\tSlide Left:  a" << endl;
     cout << "\tSlide Right: d" << endl;
