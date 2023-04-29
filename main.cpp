@@ -234,7 +234,7 @@ void open_word() {
 	
 	finin.open("story_2.txt");
 	string line_2;
-	cout<<"\033[1;6m";
+	cout<<"\033[1;36m";
 	while (getline(finin, line_2))
 	{
 		cout<<line_2<<endl;
