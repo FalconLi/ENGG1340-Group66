@@ -42,7 +42,7 @@ int getch()
 
 void press_key()
 {
-   printf("Press enter to continue...\n");
+   printf("Press enter to return to the map...\n");
    getch();
 }
 
@@ -586,20 +586,20 @@ bool choice(){
     if(nu==1){
         cout<<"HAHA!Kunzhiyin is a useless creature and by no means can be your army. You fail!"<<endl;
         cout<<"You know~~~, choice is way more important than effort!"<<endl;
-	cout<<"Press any key to return."<<endl;
+	cout << endl; 
 	press_key();
         return false;
     }
     if (per<0.2){
         cout<<"You havent even achieve 20%!\nYou failed! "<<endl;
-	cout<<"Press any key to return."<<endl;
+	cout << endl; 
 	press_key();
         return false;
 
     }
     else{
         cout<<"Good job!"<<endl;
-	cout<<"Press any key to return to the map."<<endl;
+	cout << endl; 
 	press_key();
 
         return true;
