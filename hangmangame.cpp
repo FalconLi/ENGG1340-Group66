@@ -71,7 +71,7 @@ int hangmangame() {
     cout << endl;
     cout << "\033[0m";
 	cout << "Win the hangman game if you want to pass the trial. " << endl;
-	cout << "Guess the character in the word correctly before the hangman dies or you won't pass the trial! " << endl;
+	cout << "Guess the character in the word correctly before the hangman dies." << endl;
 	cout << "\nPress Enter to continue";
 	cin.ignore();
         cin.ignore();
@@ -181,6 +181,7 @@ int hangmangame() {
 			cout << endl;
 			cout << "Press Enter to return to the map.";
     			cin.ignore();
+			cin.ignore();
 			return true;
 		}
 
@@ -190,5 +191,6 @@ int hangmangame() {
 	cout << endl;
 	cout << "Press Enter to return to the map.";
     	cin.ignore();
+	cin.ignore();
 	return false;
 }
