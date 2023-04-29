@@ -177,8 +177,10 @@ int hangmangame() {
 
 		if (now.find('_') == -1)
 		{
-			cout << "You Win!" << endl;
 			cout << endl;
+			cout << "\033[32mYou Win!" << endl;
+			cout << endl;
+			cout << "\033[0m";
 			cout << "Press Enter to return to the map.";
     			cin.ignore();
 			cin.ignore();
@@ -186,9 +188,10 @@ int hangmangame() {
 		}
 
 	}
-
-	cout << "You Lost TAT" << endl;
 	cout << endl;
+	cout << "\033[31mYou Lost TAT" << endl;
+	cout << endl;
+	cout << "\033[0m";
 	cout << "Press Enter to return to the map.";
     	cin.ignore();
 	cin.ignore();
