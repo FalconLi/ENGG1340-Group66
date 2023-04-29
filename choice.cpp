@@ -42,7 +42,7 @@ int getch()
 
 void press_key()
 {
-   printf("Press enter to return to the map...\n");
+   printf("\nPress enter to continue...");
    getch();
 }
 
@@ -542,10 +542,10 @@ bool choice(){
     
     //complete story
     cout<< "Now, choose your army first."<<endl;
-    cout<< "Press 0, you get: hogriders"<<endl;
+    cout<< "Press 0, you get: hogrider"<<endl;
     cout<< "Press 1, you get: KunZhiyin"<<endl;
     cout<< "Press 2, you get: loong"<<endl;
-    cout<< "Press 3, you get: dementors"<<endl;
+    cout<< "Press 3, you get: dementor"<<endl;
             //complete army briefing
     int nu;
     cin>>nu;
