@@ -30,7 +30,7 @@ void show_rule() {
         "If you cannot handle the game, type e to leave the game=_=\n"
         "For calculus question, the answer should be the same sequence"
         " and format as the question e.g. d/dx(-2x+3x^3)=-2+9x^2\n"
-        "You Are NOT ALLOWED To Use The CALCULATOR";
+        "You Are NOT ALLOWED To Use The CALCULATOR"<<endl;
     string x;
     cout << "\nPress Enter to continue";
     cin.ignore();
