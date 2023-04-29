@@ -122,13 +122,13 @@ int hangmangame() {
 				// if the character was guessed before
 				if (find(guesses, guesses + guesses_length, guess) != guesses + guesses_length)
 				{
-					cout << "you have tried " << guess << " before!" << endl;
+					cout << "You have tried " << guess << " before!" << endl;
 
 				}
 
 				else
 				{
-					cout << "correct! There is " << guess << " in the word!!!" << endl;
+					cout << "Correct! There is " << guess << " in the word!!!" << endl;
 					for (int i = 0; i < target_word.randword.length(); i++)
 					{
 						if (target_word.randword[i] == guess[0])
@@ -143,7 +143,7 @@ int hangmangame() {
 			// if the word is already guessed.
 			else if (find(guesses, guesses + guesses_length, guess) != guesses + guesses_length)
 			{
-				cout << "you have tried " << guess << " before!" << endl;
+				cout << "You have tried " << guess << " before!" << endl;
 
 			}
 
@@ -160,7 +160,7 @@ int hangmangame() {
 		//show the invalid input
 		else
 		{
-			cout << "invalid input" << endl;
+			cout << "Invalid input" << endl;
 
 		}
 
