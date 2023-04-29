@@ -50,6 +50,7 @@ bool guessnumber() {
     cout << "\033[0m";
     cout << "\nPress Enter to continue";
     cin.ignore();
+    cin.ignore();
     
     time_t t1 = time(NULL);
 
