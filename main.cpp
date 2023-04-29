@@ -245,7 +245,7 @@ void open_word() {
 
 int main() {
 	open_word();
-	cout<<"Press Enter to continue";
+	cout<<"\nPress Enter to continue";
 	cin.ignore();
 	initialize();
 
@@ -271,7 +271,8 @@ int main() {
 		}
 		if (map_array[21][85] == character)
 		{
-			cout<<endl<<"Fanfan has successfully passed "<<score<<" out of 6 trials!"<<endl<<"He got his desired major!!!"<<endl<<endl;
+			cout<<endl<<"\033[5;32mFanfan has successfully passed "<<score<<" out of 6 testss!"<<endl<<"He got his desired major!!!"<<endl<<endl;
+			cout<<"\033[0m";
 			cin.ignore();			
 			break;
 		}
