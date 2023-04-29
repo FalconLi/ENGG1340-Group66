@@ -130,12 +130,14 @@ int mathgame() {
         num = stoi(n);
         while (!(num >= 0 && num <= 50)) {
             cout << "Invalid input!Try again!" << endl;
+	    cout << endl;
 	    cout << "Question number? (1-50)/exit(0): ";
             cin >> n;
             num = stoi(n);
         }
 	while (find(v.begin(), v.end(), num) != v.end()) {
             cout << "You have already answered this question. Choose another question!" << endl;
+	    cout << endl;
 	    cout << "Question number? (1-50)/exit(0): ";
             cin >> n;
 	    num = stoi(n);
@@ -148,6 +150,7 @@ int mathgame() {
         }
 	v.push_back(num);
         cout << questions[num - 1][0] << endl;
+	cout << endl;
         string ans;
         cout << "Your answer is: (no need to input a space)" << endl;
         cin >> ans;
@@ -157,13 +160,16 @@ int mathgame() {
             ss << questions[num - 1][2];
             ss >> x;
             count += x;
+	    cout << endl;
             cout << "-->Correct<--" << endl;
         }
         else {
+	    cout << endl;
             cout << "-->Wrong<--" << endl;
             cout << "The correct answer is: " << questions[num - 1][1] << endl;
         }
-        cout << "Total marks : " << count << endl;
+        cout << endl;
+	cout << "Total marks : " << count << endl;
         cout<<"\nPress Enter to continue";
 	cin.ignore();
 	cin.ignore();
@@ -171,6 +177,7 @@ int mathgame() {
     }
 
     if (count >= 11) {
+	cout << endl;
         cout << "Congratulations!!!!" << endl;
         cout<<"\nPress Enter to return to the map."<<endl;
         cin.ignore();
