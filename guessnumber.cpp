@@ -87,7 +87,7 @@ bool guessnumber() {
             else if (stoi(guess) > number) {
                 cout << guess << " is too large." << endl;
             }
-            else {
+            else if (stoi(guess) == number) {
                 cout << "\033[1;32mYou've got the right number." << endl;
                 cout << "\033[0m";
                 break;
