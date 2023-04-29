@@ -104,9 +104,9 @@ bool guessnumber() {
         cout << "\n" << timeuse(time(NULL), t1) << "\033[0m" << "\nGuess(a number 1-20) or exit(e): ";
         cin >> guess;
     }
-    cout << "\033[33m" << "\nPress Enter to return to the map.";
+    cout << "\nPress Enter to return to the map.";
     cin.ignore();
-    cout << "\033[0m";
+    cin.ignore();
     return guess == to_string(number);
 }
 
