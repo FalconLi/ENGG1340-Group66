@@ -1,4 +1,6 @@
-#pragma once
+#ifndef STONEGAME_H
+#define STONEGAME_H
+
 #include <iostream>
 #include <cstdlib>   
 #include <ctime>     
@@ -19,3 +21,4 @@ bool isinteger(std::string s);
 
 int Stonegame();
 
+#endif
