@@ -319,10 +319,10 @@ bool choice(){
     };
 
     player playerlist[4]={
-        {"hogriders","no weapon",1,true},
+        {"hogrider","no weapon",1,true},
         {"Kunzhiyin","no weapon",1,false},
         {"loong","no weapon",1,false},
-        {"dementors","no weapon",1,true}
+        {"dementor","no weapon",1,true}
     };  
 
     event eventlist[12]={
