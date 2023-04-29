@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MATCHNUM_H
+#define MATCHNUM_H
 
 #include <iostream>
 #include <cctype>
@@ -16,3 +17,5 @@ int mathgame();
 bool Isinteger(string n);
 
 int matchnum();
+
+#endif
