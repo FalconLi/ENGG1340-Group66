@@ -57,7 +57,7 @@ bool Isinteger(string s) {
 int mathgame() {
 
     int count = 0;
-    // Stores answered questions
+    // Stores questions to be answered
     string questions[50][3] = {
         {"1+1*2 = ", "3", "1"},
         {"2+5*3 = ", "17", "1"},
@@ -109,6 +109,8 @@ int mathgame() {
         {"Integrate(10 - (cscx) ^ 2) = ", "10x+cotx+C", "5"},
         {"d / dx(3 + 4 + 6x ^ 2) = ", "12x", "5"},
         {"d / dx((7x + 3x + 10x) - sinx) = ", "20-cosx", "5"} };
+    vector<int> v;
+    // stores number of already answered questions
     while (count < 11) {
         string n;
         cout << "Question number? (1-50)/exit(0): ";
@@ -126,16 +128,24 @@ int mathgame() {
         int num;
         num = stoi(n);
         while (!(num >= 0 && num <= 50)) {
-            cout << "Invalid input!try again!" << endl;
+            cout << "Invalid input!Try again!" << endl;
+	    cout << "Question number? (1-50)/exit(0): ";
             cin >> n;
             num = stoi(n);
         }
+	while (find(v.begin(), v.end(), num) != v.end()) {
+            cout << "You have already answered this question. Choose another question!" << endl;
+	    cout << "Question number? (1-50)/exit(0): ";
+            cin >> n;
+	    num = stoi(n);
+	}
         if (num == 0) {
             cout << "BYE!!NO KEY\nBACK TO YOUR ASSIGNMENTS!!" << endl;
 	    cout << "\nPress Enter to return to the map.";
     	    cin.ignore();
             break;
         }
+	v.push_back(num);
         cout << questions[num - 1][0] << endl;
         string ans;
         cout << "Your answer is: (no need to input a space)" << endl;
