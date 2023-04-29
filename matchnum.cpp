@@ -131,7 +131,7 @@ int mathgame() {
         int num;
         num = stoi(n);
         if (!(num > 0 && num <= 50)) {
-            cout << "Invalid input, please try again!" << endl;
+            cout << "Invalid number, please try again!" << endl;
 	    cout << endl;
 	    continue;
         }
