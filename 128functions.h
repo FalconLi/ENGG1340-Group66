@@ -1,6 +1,6 @@
 //128functions.h
-#ifndef 128FUNCTIONS_H
-#define 128FUNCTIONS_H
+#ifndef ONETWOEIGHTFUNCTIONS_H
+#define ONETWOEIGHTFUNCTIONS_H
 
 #include <iostream>
 #include <string>
