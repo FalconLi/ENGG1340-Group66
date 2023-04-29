@@ -12,5 +12,6 @@ using namespace std;
 bool is_digits(string str);
 bool guessnumber();
 
+
 #endif
 
