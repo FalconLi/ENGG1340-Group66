@@ -39,7 +39,7 @@ void show() {
     cout << "**********Wish you have fun playing the game!!!!**********" << endl;
     cout << endl;
 
-    std::cout << "             ____            \n"
+    cout << "             ____            \n"
         << "          .-'    `-.         \n"
         << "       __/          \\__      \n"
         << "    .-'   o      o     `-.   \n"
@@ -50,7 +50,9 @@ void show() {
         << "   `._'     `---'     .'     \n"
         << "      `-.         .-'        \n"
         << "         `-------'           \n"
-        << std::endl;
+        << endl;
+    cout << "Press Enter to continue ";
+    cin.ignore();
 
 }
 
