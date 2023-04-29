@@ -44,10 +44,11 @@ bool guessnumber() {
     cout << endl;
     cout << "\033[0m";
     
-    cout << "\033[33mThere is a random number between 1-20 (1 & 20 included), try to guess it and you will have a key.\n"
+    cout << "\033[33mThere is a random number between 1-20 (1 & 20 included). \n" 
+        << "If you guess it right, you will pass the trial.\n"
         << "You only have 2 minutes!" << endl;
-    cout << "Press Enter to start the game";
     cout << "\033[0m";
+    cout << "\nPress Enter to continue";
     cin.ignore();
     
     time_t t1 = time(NULL);
