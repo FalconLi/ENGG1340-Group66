@@ -238,7 +238,7 @@ void open_word() {
 	while (getline(finin, line_2))
 	{
 		cout<<line_2<<endl;
-		if (line_2 == "\n") {
+		if (line_2.empty()) {
 		    sleep(1);
 		}
 		else {
