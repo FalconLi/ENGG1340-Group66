@@ -70,9 +70,10 @@ int hangmangame() {
     cout << "**************************************************" << endl;
     cout << endl;
     cout << "\033[0m";
-	cout << "Win the hangman game if you want to be closer get the key to leave Haking Wong. " << endl;
-	cout << "Guess the character in the word correctly otherwise the hangman will die and you can't get the key! " << endl;
-	cout << "Press Enter to Continue...";
+	cout << "Win the hangman game if you want to pass the trial. " << endl;
+	cout << "Guess the character in the word correctly before the hangman dies or you won't pass the trial! " << endl;
+	cout << "\nPress Enter to continue";
+	cin.ignore();
         cin.ignore();
 	system("clear");
 	// generate the random word
