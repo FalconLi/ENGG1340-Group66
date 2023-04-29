@@ -42,7 +42,7 @@ int getch()
 
 void press_key()
 {
-   printf("\nPress enter to continue...");
+   printf("\nPress enter to continue...\n");
    getch();
 }
 
@@ -585,7 +585,7 @@ bool choice(){
     per=(double)now/(double)best;
     if(nu==1){
         cout<<"HAHA!Kunzhiyin is a useless creature and by no means can be your army. You fail!"<<endl;
-        cout<<"You know~~~, choice is way more important than effort!"<<endl;
+        cout<<"You know, choice is way more important than effort sometimes!"<<endl;
 	cout << endl; 
 	press_key();
         return false;
