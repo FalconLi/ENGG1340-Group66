@@ -584,14 +584,14 @@ bool choice(){
     now=playerlist[nu].armynum;
     per=(double)now/(double)best;
     if(nu==1){
-        cout<<"HAHA!Kunzhiyin is a useless creature and by no means can be your army. You fail!"<<endl;
+        cout<<"HAHA! Kunzhiyin is a useless creature and can by no means be your army. You failed!"<<endl;
         cout<<"You know, choice is way more important than effort sometimes!"<<endl;
 	cout << endl; 
 	press_key();
         return false;
     }
     if (per<0.2){
-        cout<<"You havent even achieve 20%!\nYou failed! "<<endl;
+        cout<<"You haven't even achieved 20%!\nYou failed! "<<endl;
 	cout << endl; 
 	press_key();
         return false;
@@ -612,7 +612,7 @@ bool choice(){
     //    cout<<"You failed...Errr..."<<endl;
     //    return false;
     //}
-    for (int itr = 0; itr < 10; itr++){
+    for (int itr = 0; itr < 15; itr++){
 		pause();
     }
     return true;
