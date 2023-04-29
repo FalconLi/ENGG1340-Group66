@@ -53,6 +53,7 @@ void show() {
         << endl;
     cout << "Press Enter to continue ";
     cin.ignore();
+    cin.ignore();
 
 }
 
