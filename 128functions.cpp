@@ -46,9 +46,8 @@ void Welcome() {
     cout << "\tSlide Down:  s" << endl;
     cout << "\tExit:        e" << endl;
     cout << "\033[0m";
-    cout << "\nPress enter to start the game ";
+    cout << "\nPress enter to continue ";
     cin.ignore();
-    cout << "TIME TO START!!!!" << endl;
     cout << endl;
 }
 
