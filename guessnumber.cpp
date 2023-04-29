@@ -60,7 +60,7 @@ bool guessnumber() {
     string guess;
     cout << "\n" << "\033[1;31m" << timeuse(time(NULL), t1) << "\033[0m" << "\nGuess(a number 1-20) or exit(e): ";
     cin >> guess;
-    while (guess != "e" && guess != to_string(number)) {
+    while (guess != "e") {
         if (time(NULL) - t1 >= 120) {
             cout << endl;
             cout << "\033[1;31m";
