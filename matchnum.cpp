@@ -2,6 +2,8 @@
 #include <string>
 #include <sstream>
 #include <cctype>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -30,7 +32,7 @@ void show_rule() {
         " and format as the question e.g. d/dx(-2x+3x^3)=-2+9x^2\n"
         "You Are NOT ALLOWED To Use The CALCULATOR";
     string x;
-    cout << "Press Enter to continue";
+    cout << "\nPress Enter to continue";
     cin.ignore();
     system("clear");
     
@@ -151,9 +153,9 @@ int mathgame() {
             cout << "The correct answer is: " << questions[num - 1][1] << endl;
         }
         cout << "Total marks : " << count << endl;
-        cout<<"\nInput 1 to continue"<<endl;
-	int x;
-        cin >> x;
+        cout<<"\nPress Enter to continue";
+	cin.ignore();
+	cin.ignore();
         system("clear");
     }
 
