@@ -116,38 +116,30 @@ int mathgame() {
         string n;
         cout << "Question number? (1-50)/exit(0): ";
         cin >> n;
-        while (!Isinteger(n)) {
-            cout << "Invalid input, please try again" << endl;
-            cin >> n;
-            if (n == "0") {
-                cout << "Bye Bye!!!" << endl;
-		cout << "\nPress Enter to return to the map.";
-    		cin.ignore();
-                return 0;
-            }
+	if (n == "0") {
+            cout << "Bye Bye!!!" << endl;
+	    cout << "\nPress Enter to return to the map.";
+    	    cin.ignore();
+	    cin.ignore();
+            return 0;
+	}
+        if (!Isinteger(n)) {
+            cout << "Invalid input, please try again!" << endl;
+            cout << endl;
+	    continue;
         }
         int num;
         num = stoi(n);
-        while (!(num >= 0 && num <= 50)) {
-            cout << "Invalid input!Try again!" << endl;
+        if (!(num > 0 && num <= 50)) {
+            cout << "Invalid input, please try again!" << endl;
 	    cout << endl;
-	    cout << "Question number? (1-50)/exit(0): ";
-            cin >> n;
-            num = stoi(n);
+	    continue;
         }
-	while (find(v.begin(), v.end(), num) != v.end()) {
+	if (find(v.begin(), v.end(), num) != v.end()) {
             cout << "You have already answered this question. Choose another question!" << endl;
 	    cout << endl;
-	    cout << "Question number? (1-50)/exit(0): ";
-            cin >> n;
-	    num = stoi(n);
+	    continue;
 	}
-        if (num == 0) {
-            cout << "BYE!!NO KEY\nBACK TO YOUR ASSIGNMENTS!!" << endl;
-	    cout << "\nPress Enter to return to the map.";
-    	    cin.ignore();
-            break;
-        }
 	v.push_back(num);
         cout << questions[num - 1][0] << endl;
 	cout << endl;
