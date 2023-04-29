@@ -197,9 +197,11 @@ int play() {
         cout << "********************" << endl;
         cout << "\nPress Enter to return to the map.";
         cin.ignore();
+        cin.ignore();
         return false;
     }
     cout << "\nPress Enter to return to the map.";
+    cin.ignore();
     cin.ignore();
     return false;
 }
