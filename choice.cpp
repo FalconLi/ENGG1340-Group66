@@ -620,7 +620,7 @@ bool choice(){
     //    cout<<"You failed...Errr..."<<endl;
     //    return false;
     //}
-    for (int itr = 0; itr < 15; itr++){
+    for (int itr = 0; itr < 20; itr++){
 		pause();
     }
     return true;
