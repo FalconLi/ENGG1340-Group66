@@ -20,14 +20,14 @@ string line;
 int ct_map_line = 0, pos_colomn, pos_line, score=0, final_count=0;
 string map_array[27];
 char destination, character, move_direction, door = '\\', door_2 = '/', open_door = ' ', site_1, site_1_trigger, site_2, site_2_trigger, site_3, site_3_trigger, site_4, site_4_trigger, site_5, site_5_trigger, site_6, site_6_trigger, play_or_not;
-string barrier[1] = { "-|_#/\\HW312Lift" };
+string barrier[1] = { "-|_#/\\HW1234567890.Lift" };
 
 
 void initialize() {
 	//initialize the map, maybe getline from file.
 	map_array[16] = "--";
 	// set destination
-	character = char(23);
+	character = char(38);
 
 	fin.open("draft_map.txt");
 	while (getline(fin, line))
@@ -50,7 +50,7 @@ void show_map() {
 
 void move() {
 	//change the place in array.
-	cout << "Where do you wanna escape?" << endl;
+	cout << "Where do you wanna rush?" << endl;
 	cout << "Your movement: ";
 	cin.clear();
 	cin >> move_direction;
@@ -150,7 +150,7 @@ void enter_secret() {
 		system("clear");
 		if (play_or_not == 'y')
 		{
-			if (choice())
+			if (matchnum())
 			{
 				site_2 = open_door;
 				map_array[10][43] = site_2;
@@ -167,7 +167,7 @@ void enter_secret() {
 		system("clear");
 		if (play_or_not == 'y')
 		{
-			if (matchnum())
+			if (choice())
 			{
 				site_3 = open_door;
 				map_array[18][67] = site_3;
@@ -231,7 +231,7 @@ void enter_secret() {
 	}
 }
 void open_word() {
-	
+	system("clear");
 	finin.open("story_2.txt");
 	string line_2;
 	cout<<"\033[1;36m";
@@ -261,8 +261,21 @@ int main() {
 	while (character != destination){
 		system("clear");
 		show_map();
+		if (map_array[13][81]==character){
+			cout<<"\033[1;36m";
+                        cout<<"Tips: input multiple directions at one time can move faster! e.g. aaaaa."<<endl;
+			cout<<"\033[0m";
+                }
+		if (map_array[10][78]==character){
+			cout<<"\033[1;36m";
+			cout<<"Congratulations! After passing through the hardest trial in HKU, you learnt a SKILL!"<<endl;
+			cout<<"SKILL: Transport."<<endl;
+			cout<<"While choosing direction, press 't', and then input the coordinate of the place you wanna go!"<<endl;
+			cout<<"\033[0m";
+		}
 		move();
 		enter_secret();
+		
 		if (score >= 5 && final_count == 0)
 		{
 			cout<<"Major requirement achieved!"<<endl;
