@@ -38,7 +38,7 @@ int getch()
    }
 
    return c;
-}
+}//implement getch for press key, as it is not support in linux environment
 
 void press_key()
 {
@@ -51,6 +51,7 @@ void press_key_end()
    printf("\nPress Enter or any key to return to the map.\n");
    getch();
 }
+//specially used for connecting to the main function
 
 struct player{
     string army;
@@ -164,6 +165,8 @@ if(oper=="*")a.armynum=a.armynum*by;
 if(oper=="/")a.armynum=a.armynum/by;
 if(a.armynum<1)a.armynum=1;
 }
+//change armynum  by the input from struct object
+
 void seekbest(int &a,string oper,int by){
     if(oper=="+")a=a+by;
     if(oper=="-")a=a-by;
@@ -171,6 +174,8 @@ void seekbest(int &a,string oper,int by){
     if(oper=="/")a=a/by;
     if(a<1)a=1;
 }
+//for recording the best instance
+
 void showinfo(player &a){
     cout <<"You have "<<a.armynum<<" "<<a.army<<"s"<<endl;
     cout << endl;
@@ -203,6 +208,7 @@ int getVal(int defaultValue)
     t1.detach();
     return val;
 }
+// multi threading coding. Trying to make the program accept inputs in limited time and return something else if no input received
 
 int chooseroad(player &a){
     int val1,val2,val3;
@@ -241,6 +247,7 @@ int chooseroad(player &a){
         return val1;
     }
 }
+//main function.Implemented by getVal, let player choose road.
 
 void sbpart(player &a,string b,event eventlist[],int &best){
     system("clear");
@@ -291,6 +298,8 @@ void sbpart(player &a,string b,event eventlist[],int &best){
     showinfo(a);
     sleep(2);
 }   
+//give options for users to choose
+
 void idiotpart(player &a,boss bosslist[]){
     int bossNo;
     bossNo=rand()%6;
@@ -313,6 +322,7 @@ void idiotpart(player &a,boss bosslist[]){
     }
 
 }
+//final challenge
 
 bool choice(){
     boss bosslist[7]={
@@ -528,7 +538,7 @@ bool choice(){
     };
 
 
-                    
+ // text based picture implemented by arrays so that two pictures can showup side by side at the same time                   
  
     cout << "\033[5;36m**************************************************" << endl;
     cout << "  __        __   _                          " << endl;
