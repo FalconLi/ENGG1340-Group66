@@ -12,6 +12,8 @@ using namespace std;
 
 void show_rule() {
     //show the rules of the game.
+    //show the welcome word
+	
     cout << "\033[5;36m**************************************************" << endl;
     cout << "  __        __   _                          " << endl;
     cout << "  \\ \\      / /__| | ___ ___  _ __ ___   ___ " << endl;
@@ -52,6 +54,8 @@ bool Isinteger(string s) {
         // if it is not an integer, return false.
         return false;
     }
+	//if the input is valid, the function will return true
+	//else the function will return false
 }
 
 // Core of game
@@ -116,6 +120,9 @@ int mathgame() {
         string n;
         cout << "Question number? (1-50)/exit(0): ";
         cin >> n;
+	    //The input should be an integer which is in range 1-50
+	    //Player can chhose to select a 0 to exit
+	    
 	if (n == "0") {
             cout << "Bye Bye!!!" << endl;
 	    cout << "\nPress Enter to return to the map.";
@@ -177,10 +184,14 @@ int mathgame() {
     }
 
     return count;
+	//If the count is >= 11, the function will return the number.
+	//Else the function will not return true.
 }
 
 
 int matchnum() {
+	//This is the main function of the subgame.
+	
     show_rule();
     int mark = mathgame();
     if (mark >= 11)
