@@ -100,9 +100,22 @@ void move() {
 	else if (move_direction == 't')
 	{
 		int li, col;
-		cout << "where to transport" << endl;
+		cout << "Where to transport (<First coordinate (Range: 1-25)> <Second coordinate (Range: 1-97)>): ";
 		//give the coordinate for transport
 		cin >> li >> col;
+		while (!(li >= 1 && li <= 25) || !(col >= 1 && col <= 97)) {
+			if (!(li >= 1 && li <= 25) && !(col >= 1 && col <= 97)) {
+				cout << "Invalid line-number and column-number, please input coordinate again." << endl;
+			}	
+			else if (!(li >= 1 && li <= 25)) {
+				cout << "Invalid line-number, please input coordinate again." << endl;
+			}
+			else if (!(col >= 1 && col <= 97)) {
+				cout << "Invalid column-number, please input coordinate again." << endl;
+			}
+			cout << "Where to transport (<First coordinate (Range: 1-25)> <Second coordinate (Range: 1-97)>): ";
+			cin >> li >> col;
+		}	
 		map_array[li][col] = character;
 		map_array[pos_line][pos_colomn] = ' ';
 
