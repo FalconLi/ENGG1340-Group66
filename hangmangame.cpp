@@ -23,10 +23,12 @@ choose_word choose()
 {
 	choose_word data;
 	cout << "Input wordguess set (1 for fruits, 2 for sports): " << endl;
+	//pick the database of word guess
 	cin >> data.database;
 	while (data.database != "1" && data.database != "2")
 	{
 		cout << "Input wordguess set (1 for fruits, 2 for sports): " << endl;
+		//give a seconed chance if the database number is not correct.
 		cin >> data.database;
 	}
 	//automatically set the seed
@@ -98,6 +100,7 @@ int hangmangame() {
 	while (guesses_length < 8)
 	{
 		cout << "Guess a character/ hint / exit : " << endl;
+		//pick a character to guess
 		cin >> guess;
 		system("clear");
 
@@ -185,6 +188,7 @@ int hangmangame() {
 			cout << endl;
 			cout << "\033[0m";
 			cout << "Press Enter to return to the map.";
+			//act as system("pause") in linux environment
     			cin.ignore();
 			cin.ignore();
 			return true;
@@ -196,6 +200,7 @@ int hangmangame() {
 	cout << endl;
 	cout << "\033[0m";
 	cout << "Press Enter to return to the map.";
+	//act as system("pause") in linux environment
     	cin.ignore();
 	cin.ignore();
 	return false;
