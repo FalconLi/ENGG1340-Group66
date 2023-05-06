@@ -284,7 +284,8 @@ int main() {
 			cout<<"\033[1;36m";
 			cout<<"Congratulations! After passing through the hardest trial in HKU, you learnt a SKILL!"<<endl;
 			cout<<"SKILL: Transport."<<endl;
-			cout<<"While choosing direction, press 't', and then input the coordinate of the place you wanna go!"<<endl;
+			cout<<"While choosing direction, input 't', and then input the coordinate of the place you wanna go!"<<endl;
+			cout << "Format of inputting coordinate: <First coordinate (Range: 1-25)> <Second coordinate (Range: 1-97)>." << endl;
 			cout<<"\033[0m";
 		}
 		
