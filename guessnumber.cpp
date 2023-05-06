@@ -8,6 +8,8 @@ using namespace std;
 
 
 // Check whether the user input only contains digits
+// input is the string of number
+// output is true or false depending on whether only containing digits or not
 bool is_digits(string str) {
     for (char ch : str) {
         if (!isdigit(ch) && ch != '-') {
@@ -18,7 +20,9 @@ bool is_digits(string str) {
 }
 
 
-// Fetch the previous timestamp and continue calculate how much time is used.
+// Fetch the previous timestamp and continue to calculate how much time is used.
+// Input are the timestamp now and timestamp when the game began
+// Output is a string with a sentence telling the player how much time has passed
 string timeuse(time_t time, time_t t1) {
     int x = (time - t1) / 60;
     int y = (time - t1) % 60;
@@ -32,6 +36,7 @@ string timeuse(time_t time, time_t t1) {
 
 
 // Main function of minigame guess the number, given 't1' as the starting timestamp in the main function
+// Input is nothing, output is true or false to tell the main function whether the player has won or not
 bool guessnumber() {
     cout << "\033[5;36m**************************************************" << endl;
     cout << "  __        __   _                          " << endl;
@@ -46,7 +51,7 @@ bool guessnumber() {
     
     cout << "\033[33mThere is a random number between 1-20 (1 & 20 included). \n" 
         << "If you guess it right, you will pass the trial.\n"
-        << "You only have 2 minutes!" << endl;
+        << "You only have 30 seconds!" << endl;
     cout << "\033[0m";
     cout << "\nPress Enter to continue";
     cin.ignore();
@@ -61,7 +66,7 @@ bool guessnumber() {
     cout << "\n" << "\033[1;31m" << timeuse(time(NULL), t1) << "\033[0m" << "\nGuess(a number 1-20) or exit(e): ";
     cin >> guess;
     while (guess != "e") {
-        if (time(NULL) - t1 >= 120) {
+        if (time(NULL) - t1 >= 30) {
             cout << endl;
             cout << "\033[1;31m";
             cout << timeuse(time(NULL), t1) << endl;
