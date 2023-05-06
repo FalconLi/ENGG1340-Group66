@@ -5,6 +5,7 @@
 #include <unistd.h>
 using namespace std;
 
+//declare all variables
 int number_of_chances, guesses_length, data_trans;
 string now, guess;
 
@@ -17,6 +18,7 @@ struct choose_word
 
 string choice[2][7] = { {"apple", "banana", "blueberry", "grape", "lemon", "mango", "orange"}, {"football", "basketball", "bicycling ", "baseball", "volleyball", "yoga", "diving"} };
 
+//randomly pick the target words
 choose_word choose()
 {
 	choose_word data;
@@ -38,6 +40,7 @@ choose_word choose()
 	return data;
 }
 
+//draw the hangman picture, show the status.
 void state(int number_of_chances) {
 	string countdown = { "|O/|\\|/\\" };
 	string current;
@@ -56,7 +59,7 @@ void state(int number_of_chances) {
 	cout << " ________|_|___" << endl;
 }
 
-
+// the drive function of the hangmanegame
 int hangmangame() {
 	//intro
 	system("clear");
