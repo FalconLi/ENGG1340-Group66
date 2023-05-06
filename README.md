@@ -3,7 +3,7 @@ Team Members:
   Zhong   Lin      3035988586        Zhonglin1231
   Wang    Qifan    3035973452        HKUfanfan
   Li      Junzhe   3035973854        KingofLaniakea
-  Li      Haiying  3035973490
+  Li      Haiying  3035973490        FalconLi
   
 Description:
   It is a adventure game. Our map is just like the Haking Wong. The player acts in a role who is pursuing for the offer of his desired major in HKU. In the game, the player needs to control the role using "w""a""s""d"(you can also type multiple same keys for saving time) and use his wisdom to overcome obstacles in the way to achieve success. There are 6 little challenges in our game and if and only if you pass 5 or 6 subgames can you win the whole game. (simply going to the destination and the program will be ended). Every game is in a single room. There is a door matching to each room which looks like a "\/"  and it may be the key to start a subgame. when you meet a door, then you can choose to enter the game or not by inputting y or n. Among these games, you may have time limit or some other difficulties. Every concrete rule of a little game will be given when you are going to play it. 
