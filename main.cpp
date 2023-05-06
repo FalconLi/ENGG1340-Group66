@@ -113,6 +113,7 @@ void move() {
 			else if (!(col >= 1 && col <= 97)) {
 				cout << "Invalid column-number, please input coordinate again." << endl;
 			}
+			cout << endl;
 			cout << "Where to transport (<First coordinate (Range: 1-25)> <Second coordinate (Range: 1-97)>): ";
 			cin >> li >> col;
 		}	
