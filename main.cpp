@@ -56,6 +56,7 @@ void move() {
 	cout << "Where do you wanna rush?" << endl;
 	cout << "Your movement: ";
 	cin.clear();
+	//give the direction to move
 	cin >> move_direction;
 	//find current location
 	for (int i = 0; i < ct_map_line; i++)
@@ -100,7 +101,7 @@ void move() {
 	{
 		int li, col;
 		cout << "where to transport" << endl;
-
+		//give the coordinate for transport
 		cin >> li >> col;
 		map_array[li][col] = character;
 		map_array[pos_line][pos_colomn] = ' ';
@@ -133,6 +134,7 @@ void enter_secret() {
 	if (site_1_trigger == character && site_1 == door)
 	{
 		cout << "Enter? y/n: ";
+		//confirm to play the game or not
 		cin >> play_or_not;
 		system("clear");
 		if (play_or_not == 'y')
@@ -255,6 +257,7 @@ void open_word() {
 int main() {
 	open_word();
 	cout<<"\nPress Enter to continue";
+	//act as system("pause") in linux environment
 	cin.ignore();
 	initialize();
 
