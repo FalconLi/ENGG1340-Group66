@@ -2,7 +2,7 @@
 Team Members:
   Zhong   Lin      3035988586        Zhonglin1231
   Wang    Qifan    3035973452        HKUfanfan
-  Li      Junzhe   3035973854
+  Li      Junzhe   3035973854        KingofLaniakea
   Li      Haiying  3035973490
   
 Description:
