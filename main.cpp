@@ -15,6 +15,7 @@
 //#include "piggame.h"
 using namespace std;
 
+//declare all the variables first
 ifstream fin, finin;
 string line;
 int ct_map_line = 0, pos_colomn, pos_line, score=0, final_count=0;
@@ -22,7 +23,7 @@ string map_array[27];
 char destination, character, move_direction, door = '\\', door_2 = '/', open_door = ' ', site_1, site_1_trigger, site_2, site_2_trigger, site_3, site_3_trigger, site_4, site_4_trigger, site_5, site_5_trigger, site_6, site_6_trigger, play_or_not;
 string barrier[1] = { "-|_#/\\HW1234567890.Lift" };
 
-
+//initialize the map, download the map to a 2D array from draft_map.txt line by line
 void initialize() {
 	//initialize the map, maybe getline from file.
 	map_array[16] = "--";
@@ -42,12 +43,14 @@ void initialize() {
 	map_array[21][85] = '+';
 }
 
+//cout the map from the array
 void show_map() {
 	//cout the map
 	for (int i = 0; i < ct_map_line; i++)
 		cout << map_array[i] << endl;
 }
 
+// function to get the input from users to make the movement command.
 void move() {
 	//change the place in array.
 	cout << "Where do you wanna rush?" << endl;
@@ -110,6 +113,7 @@ void move() {
 	}
 }
 
+//function to decide wheather the player is at the "door", to trigger the trials.
 void enter_secret() {
 	//update the site status.
 	site_1 = map_array[7][81];
@@ -230,6 +234,8 @@ void enter_secret() {
 		}
 	}
 }
+
+//function to show the story in the beginning.
 void open_word() {
 	system("clear");
 	finin.open("story_2.txt");
@@ -245,7 +251,7 @@ void open_word() {
 }
 
 
-
+// the drive function
 int main() {
 	open_word();
 	cout<<"\nPress Enter to continue";
@@ -261,11 +267,15 @@ int main() {
 	while (character != destination){
 		system("clear");
 		show_map();
+		
+		//trigger the tips once the character is at '?'.
 		if (map_array[13][81]==character){
 			cout<<"\033[1;36m";
                         cout<<"Tips: input multiple directions at one time can move faster! e.g. aaaaa."<<endl;
 			cout<<"\033[0m";
                 }
+		
+		//trigger the skill once the charater is at '!'.
 		if (map_array[10][78]==character){
 			cout<<"\033[1;36m";
 			cout<<"Congratulations! After passing through the hardest trial in HKU, you learnt a SKILL!"<<endl;
@@ -273,9 +283,11 @@ int main() {
 			cout<<"While choosing direction, press 't', and then input the coordinate of the place you wanna go!"<<endl;
 			cout<<"\033[0m";
 		}
+		
 		move();
 		enter_secret();
 		
+		//decide if the condition for success is achieved.
 		if (score >= 5 && final_count == 0)
 		{
 			cout<<"Major requirement achieved!"<<endl;
