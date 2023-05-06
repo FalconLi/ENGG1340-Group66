@@ -11,7 +11,9 @@ using namespace std;
 
 
 void show() {
-
+    //This function is to show some basic information
+    //including a welcome word.
+    
     cout << "\033[5;36m**************************************************" << endl;
     cout << "  __        __   _                          " << endl;
     cout << "  \\ \\      / /__| | ___ ___  _ __ ___   ___ " << endl;
@@ -80,6 +82,8 @@ bool canWin(int n) {
     }
 
     return dp[n];
+    //If there is a win stragery, the function will return true;
+    //Else the function will return false.
 }
 
 bool isinteger(std::string s) {
@@ -94,6 +98,8 @@ bool isinteger(std::string s) {
         // if it is not an integer, return false.
         return false;  
     }
+    // If the input is valid, the function will return true;
+    //Else the funtcion will return false
 }
 
 int play() {
@@ -102,6 +108,8 @@ int play() {
 
     std::string numstones;
     cout << "Enter the number of stones(10~100)(0 to exit): ";
+    //The input should be an integer which is in range 0-100
+    //Player can choose to enter 0 to exit
     cin >> numstones;
 
     //0 to exit game.
@@ -204,7 +212,11 @@ int play() {
     cin.ignore();
     cin.ignore();
     return false;
+    //If the player wins tha game finally, the function will return true;
+    //Else the function will return false;
+    
 }
+
 
 int Stonegame() {
 
