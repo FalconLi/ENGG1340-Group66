@@ -48,7 +48,7 @@ void press_key()
 
 void press_key_end()
 {
-   printf("\nPress Enter to return to the map.\n");
+   printf("\nPress Enter or any key to return to the map.\n");
    getch();
 }
 
