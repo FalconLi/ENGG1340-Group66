@@ -256,6 +256,7 @@ void open_word() {
 // the drive function
 int main() {
 	open_word();
+	cout << "To win the game, pass 5 out of 6 trials and return to the \"+\" sign in the lift." << endl;
 	cout<<"\nPress Enter to continue";
 	//act as system("pause") in linux environment
 	cin.ignore();
