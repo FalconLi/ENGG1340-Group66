@@ -9,7 +9,8 @@
 using namespace std;
 string status;
 
-//This is the welcome function to start the game 128
+//This is the function to print the welcome message to start the game 128
+//It has no input and returns nothing
 void Welcome() {
 
     // to change color of text
@@ -55,6 +56,8 @@ void Welcome() {
 
 void printboard(int board[4][4]) {
     // we use nested for-loops to print the 2D array board 
+    // the input parameter is an array to store the board of the game
+    //the function returns nothing
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 3; j++) {
             if (board[i][j] == 0)
@@ -95,6 +98,8 @@ void printboard(int board[4][4]) {
 }
 
 // This function chooses two random cells to change them to 2 or 4 randomly to create the starting board.
+// The input is the board of the game and the array containing the numbers 2, 4 needed to initialize the board
+// This function again returns nothing
 void createRandom(int board[4][4], int randomarr[]) {
     srand(time(NULL)); // initialize the random number generator with the current time, so that the seed is different every time
 
@@ -114,6 +119,7 @@ void createRandom(int board[4][4], int randomarr[]) {
 
 
 // For the player to choose the direction
+// It has no input parameter but returns the character indicating the direction to slide
 char chooseDirection() {
     char x;
     cout << "Choose the direction to slide (a/w/s/d/e):";
@@ -123,6 +129,7 @@ char chooseDirection() {
 
 
 // This function is used to randomly put 2 or 4 to a randomly chosen cell after each step.
+// The input parameters are the board of the game and an array with 2, 4 to choose the random number from to add a number to the board after each step
 void randomNumberCell(int board[4][4], int randomarr[]) {
     srand(time(NULL));
     bool b = true;
@@ -152,6 +159,8 @@ void randomNumberCell(int board[4][4], int randomarr[]) {
 
 
 // check game status
+// The input is the board of the game
+// A string variable is outputted to indicate the status of the game. They are "Continue" "GAME OVER!!!" or "CONGRATULATIONS".
 string check_game_status(int board[4][4]) {
     // Once there is 128 in the board, the player wins immediately.
     for (int i = 0; i < 4; i++) {
@@ -201,6 +210,7 @@ string check_game_status(int board[4][4]) {
 
 // The following functions are used to slide to left, right, up or down.
 // define a structure for the returned result of the compress, combine and slide functions
+// This struct contains the board of the game and the boolean val to check whether the player-input is valid (whether board has changed)
 struct compress_combine_slide {
     int b[4][4];
     bool val;
@@ -208,6 +218,8 @@ struct compress_combine_slide {
 
 
 // to compress all cells to the left side without combining them
+// input is the board of the game
+// output is the struct which contains the board after compressing and the boolean to check whether board has changed
 compress_combine_slide compress_left(int board[4][4]) {
     compress_combine_slide result;
     bool validity = false;
@@ -240,6 +252,8 @@ compress_combine_slide compress_left(int board[4][4]) {
 
 
 // to combine two same numbers
+// input is the board of the game
+// output is the struct which contains the board after combining and the boolean to check whether board has changed
 compress_combine_slide combine_left(int board[4][4]) {
     compress_combine_slide result;
     bool validity = false;
@@ -266,10 +280,17 @@ compress_combine_slide combine_left(int board[4][4]) {
 
 
 // realizing sliding to the left
+// input is the board of the game
+// output is the struct which contains the board after sliding and the boolean to check whether board has changed
 compress_combine_slide slide_left(int board[4][4]) {
     compress_combine_slide result1, result2, result3, result;
+    
+    // to realize sliding, we need to compress, then combine, then slide again
     result1 = compress_left(board);
     result2 = combine_left(result1.b);
+    
+    // if something has changed then at least the val of either result1 or result2 must be true, 
+    // so the final val of result is obtained with result1.val || result2.val (if one val is true the final val must be true)
     result.val = result1.val || result2.val;
     result3 = compress_left(result2.b);
     for (int i = 0; i < 4; i++) {
@@ -280,7 +301,7 @@ compress_combine_slide slide_left(int board[4][4]) {
 }
 
 
-// The following functions have the same logic as sliding to the left.
+// The following functions have the same logic as sliding to the left. They realize sliding to the right, up or down.
 // Only small changes need to be made, since sliding left combines from the left to the right, and vice versa.
 // Sliding up combines from up to down, and vice versa.
 compress_combine_slide compress_right(int board[4][4]) {
@@ -472,7 +493,8 @@ compress_combine_slide slide_down(int board[4][4]) {
     return result;
 }
 
-
+// This function realizes the game 128.
+// It has no input, but returns true or false to the main function to check whether player has won or not.
 bool main_128() {
 
     // to store the game status
